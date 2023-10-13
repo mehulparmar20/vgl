@@ -55,7 +55,7 @@
         </div><br>
         <div class="col-8">
             <div class="text-center ">
-                <p class="mb-0">Already have an account? <a href="{{route('login')}}">
+                <p class="mb-0">Already have an account? <a href="{{route('welcome')}}">
                     Sign in here</a></p>
             </div>
         </div>

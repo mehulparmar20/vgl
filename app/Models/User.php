@@ -23,6 +23,7 @@ class User extends Authenticatable
         'contact_no',
         'email',
         'password',
+        'user_type',
     ];
     protected $table="users";
     protected $guarded = [];

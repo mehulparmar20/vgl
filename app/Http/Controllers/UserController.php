@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
-       return view('/login');  
+       return view('/welcome');  
     }
     public function customLogin(Request $request)
     {
@@ -21,7 +21,7 @@ class UserController extends Controller
         
         }
         else{
-        return redirect('/login')->with('error', 'Invalid credentials');
+        return redirect('/welcome')->with('error', 'Invalid credentials');
         }
     }
     public function register()
@@ -33,12 +33,12 @@ class UserController extends Controller
     {
         // dd($request);
         $validated = $request->validate([
-            'email' => 'required|unique:users|max:255',
-            'password' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
             'contact_no' => 'required',
-            'user_type'=>'required',
+            'email' => 'required|unique:users|max:255',
+            'password' => 'required',
+             'user_type'=>'required',
         ]);
         // dd($request);
         $data=User::create([
@@ -50,10 +50,7 @@ class UserController extends Controller
             'user_type'=>$request->user_type,
         ]);
 
-        
-        
-        
-        return redirect()->route('/login')->with('success', 'User Registered successfully.');
+        return redirect()->route('/welcome')->with('success', 'User Registered successfully.');
     }
     public function logout(Request $request) {
         Auth::logout(); // Log the user out
@@ -61,6 +58,6 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login'); 
+        return redirect('/'); 
 }
 }
