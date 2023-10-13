@@ -20,16 +20,16 @@ use Illuminate\Support\Facades\Route;
 
 
 //UserController
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
 
 
-Route::get('login', [UserController::class, 'index'])->name('login');
+Route::get('/', [UserController::class, 'index'])->name('welcome');
 Route::post('custom-login', [UserController::class, 'customLogin'])->name('custom-login'); 
 Route::get('register', [UserController::class, 'register'])->name('user.register');
 Route::post('custom-register', [UserController::class, 'customregister'])->name('custom-register'); 

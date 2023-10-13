@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
-       return view('/login');  
+       return view('/welcome');  
     }
     public function customLogin(Request $request)
     {
@@ -21,7 +21,7 @@ class UserController extends Controller
         
         }
         else{
-        return redirect('/login')->with('error', 'Invalid credentials');
+        return redirect('/')->with('error', 'Invalid credentials');
         }
     }
     public function register()
@@ -53,7 +53,7 @@ class UserController extends Controller
         
         
         
-        return redirect()->route('/login')->with('success', 'User Registered successfully.');
+        return redirect()->route('/welcome')->with('success', 'User Registered successfully.');
     }
     public function logout(Request $request) {
         Auth::logout(); // Log the user out
@@ -61,6 +61,6 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login'); 
+        return redirect('/'); 
 }
 }
