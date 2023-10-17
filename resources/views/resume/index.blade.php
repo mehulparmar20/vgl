@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-<a class="btn btn-success" href="{{route('resume.create')}}">Add Form</a><br>
+<a class="btn btn-success" href="{{route('welcome')}}">Add Form</a><br>
 <table  class="table table-striped table-light table-bordered"id="resumetable"><br>
     <thead>
       <tr>
@@ -49,9 +49,11 @@
         <td>{{$row->relocate}}</td>
         <td>{{$row->education}}</td>
         <td>{{$row->skills}}</td>
-        <td>{{$row->summery}}</td>
+        <td>{!!$row->summery!!}</td>
         <td>
           <a  href="{{route('view',$row->id) }}"><i class='bx bxs-show'>view</i></a>
+          <a  href="{{route('resume.edit',$row->id) }}"><i class='bx bxs-show'>Edit</i></a>
+          <a  href="{{route('resume-delete',$row->id) }}"><i class='bx bxs-show'>Delete</i></a>
         </td>
       </tr>
       @endforeach

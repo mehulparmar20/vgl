@@ -112,7 +112,7 @@
         <div class="form-group">
             <strong>Summery:</strong>
             
-            {{$data->summery}}
+            {!!$data->summery!!}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">

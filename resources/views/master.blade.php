@@ -155,6 +155,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{url('dist/css/adminlte.min.css')}}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   {{-- <link href="{{url('plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" /> --}}
 </head>
 <!--
@@ -347,21 +348,39 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="{{url('/dashboard')}}" class="nav-link active">
+            <a href="{{url('/dashboard')}}" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-                <i class="right fas fa-angle-left"></i>
+                {{-- <i class="right fas fa-angle-left"></i> --}}
               </p>
             </a>
-            <a href="{{route('resume.index')}}" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <a href="{{route('resume.index')}}" class="nav-link ">
+              
+              <i class="nav-icon fas fa-users"></i> 
+              
               <p>
-                Resume
-                <i class="right fas fa-angle-left"></i>
+                Applicant
+                {{-- <i class="right fas fa-angle-left"></i> --}}
               </p>
             </a>
             
+            <a href="{{route('job.create')}}" class="nav-link ">
+              <i class="nav-icon fas fa-user-plus "></i>
+              <p>
+                Jobs
+                {{-- <i class="right fas fa-angle-left"></i> --}}
+              </p>
+            </a>
+
+            {{-- <a  href="{{url('/view2',$data->id) }}"> --}}
+            <a href="{{url('/view2')}}" class="nav-link ">
+              <i class="nav-icon fas fa-bell "></i>
+              <p>
+                Cancel Job
+                {{-- <i class="right fas fa-angle-left"></i> --}}
+              </p>
+            </a>
             {{-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="./index.html" class="nav-link">
@@ -993,7 +1012,7 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -1009,7 +1028,7 @@
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
-    </div>
+</div>
     <!-- /.content-header -->
 @yield('content')
  <!-- Control Sidebar -->
@@ -1020,10 +1039,10 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2022-2023 <a href="https://www.veravalonline.com/">www.veravalonline.com</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
+      <b>Version</b> 1.0
     </div>
   </footer>
 </div>
@@ -1053,7 +1072,22 @@
 src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script> --}}
-
+{{--ckeditor and sweetalert cdn --}}
+<script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+      ClassicEditor
+          .create( document.querySelector( '#edit_description,#create_description,#update_summary') )
+          .catch( error => {
+              console.error( error );
+          } );
+  </script>
+  @if (session('success'))
+  <script>
+      swal("Done!", "{{ session('success') }}", "success");
+  </script>
+@endif
+  {{-- end ckeditor for edit --}}
 <script>
     $(document).ready(function() {
         // Initialize DataTables
