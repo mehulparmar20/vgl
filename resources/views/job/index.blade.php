@@ -1,4 +1,4 @@
-@extends('masterfront') 
+@extends('master') 
  @section('content')
 
 {{-- <!DOCTYPE html>
@@ -12,6 +12,7 @@
 </head>
 <body> --}}
     <div class="container">
+      <a class="btn btn-success" href="{{route('job.create')}}">Add Form</a><br>
 <table  class="table table-striped table-light table-bordered"id="jobtable"><br>
     <thead>
       <tr>
@@ -22,6 +23,8 @@
         <th scope="col">Category</th>
         <th scope="col">Type</th>
         <th scope="col">Location</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -35,6 +38,8 @@
         <td>{{$row->category}}</td>
         <td>{{$row->type}}</td>
         <td>{{$row->location}}</td>
+        <td>{{$row->startdate}}</td>
+        <td>{{$row->enddate}}</td>
         <td>
           <a  href="{{url('/view1',$row->id) }}"><i class='bx bxs-show'>view</i></a>
           @if(Auth::check())

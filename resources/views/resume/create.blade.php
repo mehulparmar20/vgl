@@ -1,19 +1,12 @@
-{{-- @extends('master')
+@extends('masterfront')
 @section('content') 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-</head>
-<body>
+<br>
+
     <div class="container">
-        <a class="btn btn-success" href="{{route('job.index')}}">Jobs</a>
+        <a class="btn btn-success" href="{{route('welcome')}}">Jobs List</a>
             <form action="{{url('resume-store')}}" enctype="multipart/form-data" method="POST">
                 @csrf
+               
             <div class="row">
                 <div class="col-xl ">
                     <div class="card">
@@ -26,19 +19,20 @@
                             {{ session('success') }}
                         </div>
                          @endif
+                       
                         <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-5">
-                                        <label for="first_name" >First Name</label>
+                                        <label for="first_name" >First Name<span class="text text-danger">*</span></label>
                                         <input type="text" class="form-control" id="create_fname"name="first_name" 
                                         placeholder="Enter First Name" >
                                         @error('first_name')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                     </div>
-                                   
-                                    <div class="col-md-5">
-                                        <label for="last_name" class="form-label">Last Name</label>
+                                  
+                                   <div class="col-md-5">
+                                        <label for="last_name" class="form-label">Last Name<span class="text text-danger">*</span></label>
                                         <input type="text" class="form-control" id="create_lname"name="last_name" placeholder="Enter Last Name" >
                                         @error('last_name')
                                         <div class="text-danger">{{ $message }}</div>
@@ -46,12 +40,20 @@
                                     </div>
                                 </div>
     
-    
-                               <div class="row">
+                                <div class="row">
                                 <div class="col-md-5">
-                                   <br> <label for="position" class="form-label">Position</label>
-                                    <select  type="text" class="form-control" name="position"id="create_position" 
-                                    placeholder="Enter Position"  >
+                                    <br> <label for="dob"class="form-label">DOB<span class="text text-danger">*</span></label>
+                                     <input type="date" class="form-control" name="dob"id="create_dob" placeholder="Enter DOB" >
+                                     @error('dob')
+                                     <div class="text-danger">{{ $message }}</div>
+                                 @enderror
+                                 </div>
+                       
+                                <div class="col-md-5">
+                                   <br> <label for="position" class="form-label">Designation<span class="text text-danger">*</span></label>
+                                    <select  multiple="multiple"type="text" class="form-control" 
+                                    name="designation[]"id="create_designation" 
+                                    placeholder="Enter Designation"  >
                                     <option value="Backend">Backend</option>
                                     <option value="Frontend">Frontend</option>
                                     <option value="Fullstack">Full Stack</option>
@@ -60,9 +62,17 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                                 </div>
-                                
+                                </div>
+                                <div class="row">
                                 <div class="col-md-5">
-                                   <br> <label for="phone" class="form-label">Phone Number</label>
+                                    <br><label for="experience" class="form-label">Total Experience<span class="text text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="experience" id="create_experience" placeholder="Enter Experience" >
+                                    @error('experience')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                                </div>
+                                <div class="col-md-5">
+                                   <br> <label for="phone" class="form-label">Mobile No<span class="text text-danger">*</span></label>
                                     <input type="phone" class="form-control" id="create_phone"name="phone" placeholder="Enter phone no"  >
                                     @error('phone')
                                     <div class="text-danger">{{ $message }}</div>
@@ -71,7 +81,7 @@
                                 
                                 <div class="row">
                                 <div class="col-md-5">
-                                  <br>  <label for="email" class="form-label">Email</label>
+                                  <br>  <label for="email" class="form-label">Email<span class="text text-danger">*</span></label>
                                     <input type="email" class="form-control" id="create_email"name="email" placeholder="Enter Email"  >
                                     @error('email')
                                     <div class="text-danger">{{ $message }}</div>
@@ -80,24 +90,37 @@
                                <div class="col-md-5">
                                     <br><label for="location" class="form-label">Location</label>
                                     <input type="text" class="form-control" id="create_location"name="location" placeholder="Enter Location" >
-                                    @error('location')
+                                    {{-- @error('location')
                                     <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                                @enderror --}}
                                 </div></div>
+                               {{-- @dd($country) --}}
                                 <div class="row">
                                     <div class="col-md-5">
-                                        <br>   <label for="city" class="form-label">City</label>
-                                        <input type="text" class="form-control" id="create_city"name="city" placeholder="Enter City"  >
-                                        @error('city')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
+                                        <label for="country" class="form-label">Country</label>
+                                        <select  type="text" class="form-control" 
+                                    name="country"id="create_country" 
+                                    placeholder="Enter Country" >
+                                   
+                                    @foreach ($country as $data)
+                                   
+                                    <option value="{{$data->id}}">{{$data->country_name}}</option>  
+                                    @endforeach
+                                  </select>
                                     </div>
+                                    {{-- @dd($state) --}}
                                 <div class="col-md-5">
-                                    <br>   <label for="state" class="form-label">State</label>
-                                    <input type="text" class="form-control" id="create_state"name="state" placeholder="Enter State"  >
-                                    @error('state')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                                    <label for="state" class="form-label">State</label>
+                                    <select  type="text" class="form-control" 
+                                    name="state" id="create_state" 
+                                    placeholder="Enter State">
+                                    {{-- @dd($state) --}}
+                                    @foreach ($state as $d)
+                                    
+                                    <option value="{{$d->state_id}}">{{$d->name}}</option>  
+                                    @endforeach
+                                    
+                                    </select>
                                 </div>
                                 
                                 </div>
@@ -110,70 +133,87 @@
                                     @error('profile')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                                </div> 
+                                </div> --}}
                                 <div class="row"> 
-                                   
+                                   {{-- @dd($district) --}}
                                     <div class="col-md-5">
-                                        <br><label for="country" class="form-label">Country</label>
-                                        <input type="text" class="form-control" id="create_country"name="country" placeholder="Enter Country"  >
-                                        @error('country')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
+                                        <label for="city" class="form-label">District</label>
+                                        <select  type="text" class="form-control" 
+                                    name="district"id="create_district" 
+                                    placeholder="Enter District"  >
+                                    @foreach ($district as $data)
+                                    <option value="{{$data->district_id}}">{{$data->district_name}}</option>  
+                                    @endforeach
+                                    
+                                    </select>
                                     </div>
+                                    {{-- @dd($city) --}}
+                                    <div class="col-md-5">
+                                    <label for="city" class="form-label">City</label>
+                                    <select  type="text" class="form-control" 
+                                name="city"id="create_city" 
+                                placeholder="Enter City"  >
+                                @foreach ($city as $data)
+                                <option value="{{$data->city_id }}">{{$data->city_name}}</option>  
+                                @endforeach
+                                
+                                </select>
+                                    </div>
+                                </div>
+                                    <div class="row">
                                 <div class="col-md-5">
-                                    <br> <label for="resume" class="form-label">Resume</label>
+                                    <br> <label for="resume" class="form-label">Resume<span class="text text-danger">*</span></label>
                                     <input type="file" class="form-control" 
                                     id="create_resume"name="resume" placeholder="Choose Resume"  >
+                                    <span class="text text-success">Note: Upload pdf or Word</span>
                                     @error('resume')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                                 </div>
                                
-                              </div>
-                            <div class="row">
+                             
                                 <div class="col-md-5">
-                                    <br><label for="postcode" class="form-label">Postcode</label>
-                                    <input type="text" class="form-control" id="create_postcode"name="postcode" placeholder="Enter postcode"  >
-                                    @error('postcode')
+                                    <br><label for="postcode" class="form-label">Pincode</label>
+                                    <input type="text" class="form-control" id="create_pincode"name="pincode" placeholder="Enter Pincode"  >
+                                    {{-- @error('pcode')
                                     <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                                @enderror --}}
                                 </div>
+                                    </div>
+                                    <div class="row">
                                 <div class="col-md-5">
-                                    <br><label for="bsValidation9" class="form-label">Willing You Relocate</label>
-                                    
-                                    <select  type="text" class="form-control" name="relocate"id="create_relocate" placeholder="Willing You Relocate"  >
-                                    
-                                        <option value="1">Yes</option>
-                                    <option value="0">No</option>
-                                    </select>
-                                </div>
+                                    <br><label for="postcode" class="form-label">Higher Qualification<span class="text text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="create_qualification"name="qualification" placeholder="Enter qualification"  >
+                                    @error('qualification')
+                                    <div class="text-danger">{{ $message }}</div> 
+                                    @enderror
                              </div>
-                                <div class="row">
+                            
                                     <div class="col-md-5">
                                         <br><label for="education" class="form-label">Education</label>
                                         <input type="text" class="form-control" name="education" id="create_education" placeholder="Enter Education" >
-                                        @error('education')
+                                        {{-- @error('education')
                                         <div class="text-danger">{{ $message }}</div>
-                                    @enderror
+                                    @enderror --}}
                                     </div>
+                                    </div>
+                               <div class="row">
                                 <div class="col-md-5">
-                                   <br> <label for="skills"class="form-label">Skills</label>
-                                    <input type="text" class="form-control" name="skills"id="create_skills" placeholder="Enter skills" >
-                                    @error('skills')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                                </div>
-                               
-                                <div class="col-md-5">
-                                    <br><label for="bsValidation13" class="form-label">Summary</label>
+                                    <br><label for="bsValidation13" class="form-label">About My Self</label>
                                     <textarea class="form-control" id="create_summary"name="summery"  rows="3" ></textarea>
                                 </div>
-                                </div>
+                                
+                               </div>
                                 <div class="col-md-12">
-                                   <br> <div class="d-md-flex d-grid align-items-center gap-3">
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">I agree to the terms and conditions</label>
+                                      </div>
+                                   <div class="d-md-flex d-grid align-items-center gap-3">
                                         <button type="submit" class="btn btn-md px-4" id="storresume">Submit</button>
                                     </div>
                                 </div>
+                                
                             
                         </div>
                     </div>
@@ -187,8 +227,5 @@
        
      </style>
     </div></div>
-</body>
-</html>
+
     @endsection
-    Note:Replace by welcome file
-    

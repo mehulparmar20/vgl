@@ -7,6 +7,24 @@ use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
+    // public function vgl()
+    // {
+    //     return view('')
+    // }
+    public function frontindex()
+    {
+        // $startdate=Job::get('startdate');
+        // $enddate=Job::get('enddate');
+        $startdate = '2023-10-17';  // Replace with your actual start date
+        $enddate = '2023-10-21'; 
+        $data = Job::whereDate('startdate', '>=', $startdate)
+                   ->whereDate('enddate', '<=', $enddate)
+                   ->get();
+
+        // dd($data);
+        // $data=Job::orderBy('id', 'desc')->where('delete_status',1)->get();
+        return view('welcome',compact('data'));
+    }
     public function index()
     {
         $data=Job::orderBy('id', 'desc')->where('delete_status',1)->get();
@@ -31,6 +49,8 @@ class JobController extends Controller
         'category' => 'required',
         'type' => 'required',
         'location' => 'required',
+        'startdate'=>'required',
+        'enddate'=>'required',
     ]);
     // dd($request->all());
     $job=new Job();
@@ -39,6 +59,8 @@ class JobController extends Controller
     $job->category=$request->input('category');
     $job->type=$request->input('type');
     $job->location=$request->location;
+    $job->startdate=$request->startdate;
+    $job->enddate=$request->enddate;
     $job->save();
     return redirect()->route('job.index')->with('success', 'Job is Created Successfully!');
     // return back()->with('success', 'Job is Created Successfully!');
@@ -64,6 +86,8 @@ public function update(Request $request,$id)
     $data->category=$request->input('category');
     $data->type=$request->input('type');
     $data->location=$request->location;
+    $data->startdate=$request->startdate;
+    $data->enddate=$request->enddate;
     $data->save();
     return redirect()->route('job.index')->with('success', 'Job is Upadated Successfully!');
 }

@@ -36,13 +36,19 @@
                                     @enderror
                                     </div>
                                 </div>
-    
-    
-                               <div class="row">
+                                <div class="row">
                                 <div class="col-md-5">
-                                   <br> <label for="position" class="form-label">Position</label>
-                                    <select  type="text" class="form-control" value="{{$data->position}}" name="position"id="update_position" 
-                                    placeholder="Enter Position"  >
+                                    <br> <label for="dob"class="form-label">DOB<span class="text text-danger">*</span></label>
+                                     <input type="date" class="form-control" name="dob"id="create_dob" placeholder="Enter DOB" >
+                                     @error('dob')
+                                     <div class="text-danger">{{ $message }}</div>
+                                 @enderror
+                                 </div>
+    
+                                <div class="col-md-5">
+                                   <br> <label for="position" class="form-label">Designation</label>
+                                    <select  type="text" class="form-control" value="{{$data->designation}}" name="designation"id="update_designation" 
+                                    placeholder="Enter Designation"  >
                                     <option value="Backend">Backend</option>
                                     <option value="Frontend">Frontend</option>
                                     <option value="Fullstack">Full Stack</option>
@@ -50,16 +56,22 @@
                                     @error('position')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                                </div>
-                                
+                                </div></div>
+                                <div class="row">
                                 <div class="col-md-5">
-                                   <br> <label for="phone" class="form-label">Phone Number</label>
+                                    <br><label for="experience" class="form-label">Total Experience<span class="text text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="experience" value="{{$data->experience}}" id="create_experience" placeholder="Enter Experience" >
+                                    @error('experience')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                                </div>
+                                <div class="col-md-5">
+                                   <br> <label for="phone" class="form-label">Mobile No</label>
                                     <input type="phone" class="form-control"value="{{$data->phone}}" id="update_phone"name="phone" placeholder="Enter phone no"  >
                                     @error('phone')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                                 </div></div>
-                                
                                 <div class="row">
                                 <div class="col-md-5">
                                   <br>  <label for="email" class="form-label">Email</label>
@@ -68,13 +80,15 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                                 </div>
+                               
                                <div class="col-md-5">
                                     <br><label for="location" class="form-label">Location</label>
                                     <input type="text" class="form-control" value="{{$data->location}}"id="update_location"name="location" placeholder="Enter Location" >
                                     @error('location')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                                </div></div>
+                                </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-5">
                                         <br>   <label for="city" class="form-label">City</label>
@@ -83,6 +97,7 @@
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                     </div>
+                                    
                                 <div class="col-md-5">
                                     <br>   <label for="state" class="form-label">State</label>
                                     <input type="text" class="form-control" value="{{$data->state}}" id="update_state"name="state" placeholder="Enter State"  >
@@ -90,8 +105,8 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                                 </div>
-                                
                                 </div>
+                              
                                
                                {{-- <div class="col-md-5">
                                     <br><label for="profile" class="form-label">Profile</label>
@@ -102,8 +117,8 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                                 </div> --}}
-                                <div class="row"> 
-                                   
+                               
+                                <div class="row">
                                     <div class="col-md-5">
                                         <br><label for="country" class="form-label">Country</label>
                                         <input type="text" class="form-control" value="{{$data->country}}" id="update_country"name="country" placeholder="Enter Country"  >
@@ -111,6 +126,7 @@
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                     </div>
+                                    
                                 <div class="col-md-5">
                                     <br> <label for="resume" class="form-label">Resume</label>
                                     <input type="file" class="form-control" 
@@ -119,49 +135,39 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                                 </div>
-                               
-                              </div>
-                            <div class="row">
+                                </div>
+                                <div class="row">
                                 <div class="col-md-5">
-                                    <br><label for="postcode" class="form-label">Postcode</label>
-                                    <input type="text" class="form-control" value="{{$data->postcode}}" id="update_postcode"name="postcode" placeholder="Enter postcode"  >
-                                    @error('postcode')
+                                    <br><label for="postcode" class="form-label">Pincode</label>
+                                    <input type="text" class="form-control" id="update_pincode"value="{{$data->pincode}}"name="pincode" placeholder="Enter Pincode"  >
+                                    {{-- @error('pincode')
                                     <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                                @enderror --}}
                                 </div>
+                                    
                                 <div class="col-md-5">
-                                    <br><label for="bsValidation9" class="form-label">Willing You Relocate</label>
-                                    
-                                    <select  type="text" class="form-control"value="{{$data->relocate}}"
-                                         name="relocate"id="update_relocate" placeholder="Willing You Relocate"  >
-                                    
-                                        <option value="1">Yes</option>
-                                    <option value="0">No</option>
-                                    </select>
-                                </div>
+                                    <br><label for="postcode" class="form-label">Higher Qualification<span class="text text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="update_qualification"value="{{$data->qualification}}" name="qualification" placeholder="Enter qualification"  >
+                                    @error('qualification')
+                                    <div class="text-danger">{{ $message }}</div> 
+                                    @enderror
                              </div>
+                                </div>
+                           
                                 <div class="row">
                                     <div class="col-md-5">
                                         <br><label for="education" class="form-label">Education</label>
-                                        <input type="text" class="form-control"value="{{$data->education}}"
-                                         name="education" id="update_education" placeholder="Enter Education" >
-                                        @error('education')
+                                        <input type="text" class="form-control" name="education"value="{{$data->education}}" id="create_education" placeholder="Enter Education" >
+                                        {{-- @error('education')
                                         <div class="text-danger">{{ $message }}</div>
-                                    @enderror
+                                    @enderror --}}
                                     </div>
+                                
                                 <div class="col-md-5">
-                                   <br> <label for="skills"class="form-label">Skills</label>
-                                    <input type="text" class="form-control" value="{{$data->skills}}" name="skills"id="update_skills" placeholder="Enter skills" >
-                                    @error('skills')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                                    <br><label for="bsValidation13" class="form-label">About My Self</label>
+                                    <textarea class="form-control" id="update_summary"name="summery"  rows="3" >{{$data->summery}}</textarea>
                                 </div>
-                               
-                                <div class="col-md-5">
-                                    <br><label for="bsValidation13" class="form-label">Summary</label>
-                                    <textarea class="form-control"  id="update_summary"name="summery"  rows="3" >{{$data->summery}}</textarea>
-                                </div>
-                                </div>
+                               </div>
                                 <div class="col-md-12">
                                    <br> <div class="d-md-flex d-grid align-items-center gap-3">
                                         <button type="submit" class="btn btn-md px-4" id="updateresume">Update</button>

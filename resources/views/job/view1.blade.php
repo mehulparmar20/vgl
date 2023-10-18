@@ -18,7 +18,7 @@
             <h4 class="m-0">Job Details</h4>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{route('welcome')}}">Apply Job</a>
+            <a class="btn btn-primary" href="{{route('resume.create')}}">Apply Job</a>
         </div>
     </div>
   </div>

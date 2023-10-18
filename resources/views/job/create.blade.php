@@ -16,7 +16,7 @@
         {{-- <a class="btn btn-success" href="{{route('resume.index')}}">Add Table</a> --}}
             <form action="{{url('job-store')}}" enctype="multipart/form-data" method="POST">
                 @csrf
-                <a class="btn" href="{{route('job.index')}}">Jobs</a>
+                <a class="btn" href="{{route('welcome')}}">Jobs</a>
             <div class="row">
                 <div class="col-xl ">
                     <div class="card">
@@ -80,6 +80,17 @@
                                     @error('location')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
+                                </div>
+                                <div class="col-7">
+                                    <br><label for="location" class="form-label">Job Duration</label>
+                                <br>    <label for="startdate" class="form-label">Start Date</label>
+                                    <input type="date" class="form-control" id="create_startdate"name="startdate" placeholder="Enter Startdate" >
+                                  <br>  <label for="enddate" class="form-label">End Date</label>
+                                    <br><input type="date" class="form-control" id="create_enddate"name="enddate" placeholder="Enter Enddate" >
+                                    
+                                    {{-- @error('location')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror --}}
                                 </div>
                              
                                 <div class="col-md-12">

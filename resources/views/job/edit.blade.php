@@ -79,6 +79,17 @@
                                 @enderror
                                 </div>
                              
+                                <div class="col-7">
+                                    <br><label for="location" class="form-label">Job Duration</label>
+                                <br>    <label for="startdate" class="form-label">Start Date</label>
+                                    <input type="date" class="form-control" id="create_startdate" value="{{$data->startdate}}" name="startdate" placeholder="Enter Startdate" >
+                                  <br>  <label for="enddate" class="form-label">End Date</label>
+                                    <br><input type="date" class="form-control" id="create_enddate"value="{{$data->enddate}}" name="enddate" placeholder="Enter Enddate" >
+                                    
+                                    {{-- @error('location')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror --}}
+                                </div>
                                 <div class="col-md-12">
                                    <br> <div class="d-md-flex d-grid align-items-center gap-3">
                                         <button type="submit" class="btn btn-md px-4" id="storejob">Update</button>

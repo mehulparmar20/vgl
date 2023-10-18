@@ -51,12 +51,19 @@ Route::get('generate-pdf/{id}', [PDFController::class, 'generatePDF'])->name('ge
 //JobController
 Route::get('job-create', [JobController::class,'create'])->name('job.create');
 Route::post('job-store', [JobController::class, 'store'])->name('job-store');
+Route::get('job-index', [JobController::class, 'index'])->name('job.index');
 Route::get('job-edit/{id}', [JobController::class, 'edit'])->name('job.edit');
 Route::post('job-update/{id}', [JobController::class, 'update'])->name('job-update');
 Route::get('job-delete/{id}', [JobController::class, 'delete'])->name('job-delete'); 
 Route::get('view2', [JobController::class,'view2'])->name('job.view2');
 });
 Route::get('view1/{id}', [JobController::class, 'view1'])->name('job.view1');
-Route::get('job', [JobController::class, 'index'])->name('job.index');
-Route::get('/', [ResumeController::class,'create'])->name('welcome');
+Route::get('/', [JobController::class, 'frontindex'])->name('welcome');
+// Route::get('/vgl', [JobController::class, 'index1'])->name('vgl');
+Route::get('resume-create', [ResumeController::class,'create'])->name('resume.create');
 Route::post('resume-store', [ResumeController::class, 'store'])->name('resume-store');
+
+Route::get('city', [DashboardController::class,'index'])->name('city');
+Route::post('/getState', [DashboardController::class,'getState']);
+// Route::post('/getdistrict', [DashboardController::class,'getDistrict']);
+Route::post('/getCity', [DashboardController::class,'getCity']);

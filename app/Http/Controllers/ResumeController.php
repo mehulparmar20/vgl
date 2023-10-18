@@ -2,46 +2,75 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
+use App\Models\Country;
+use App\Models\District;
 use App\Models\Resume;
+use App\Models\State;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ResumeController extends Controller
 {
     public function index()
-    {    
-        $data =Resume::orderBy('id', 'desc')->where('delete_status',1)->get();
+    {    $data=Resume::orderBy('id', 'desc')->where('delete_status',1)
+        ->with('country')->get();
+        // dd($data);
+        
+        // foreach ($data as $row) {
+            // $countryid= $row->state;
+            // $countryName = Country::find($countryid)->country_name; // Replace 'State' with your state model name
+            //  $row->country =$countryName;
+            // dd($countryName);
+        // }
+        // dd($data);
+        // $data =Resume::orderBy('id', 'desc')->where('delete_status',1)->get();
         // dd($data);
        // $data=Resume::all();
         return view('resume.index',compact('data'));
     }
 public function create()
 {
-    return view('welcome');
+    
+    $country=Country::all();
+    $state=State::all();
+    // dd($state);
+    $district=District::all();
+    $city=City::all();
+//    dd($city);
+ return view('resume.create',compact('country','state','district','city'));
 }
 public function store(Request $request)
 {
+//    dd($request); 
     $request->validate([
         'first_name' => 'required',
         'last_name' => 'required',
-        'position' => 'required',
+        'designation' => 'required',
         'phone' => 'required',
         'email' => 'required',
-        'location' => 'required',
+        'experience' => 'required|integer',
         'country' => 'required',
         'city' => 'required',
-        'postcode' => 'required',
-        'education' => 'required',
-        'skills' => 'required',
+        'district' => 'required',
+        'state' => 'required',
+        'pincode' => 'required',
+        'qualification' => 'required',
         // 'profile' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'resume' => 'required|file|mimes:pdf,jpg,jpeg,png,gif',
+        // 'resume' => 'required|file|mimes:pdf,jpg,jpeg,png,gif',
+        'resume' => 'required|file|mimetypes:application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document'
         // Define rules for other fields here
     ]);
+    // dd($request);
     // dd($request->all());
     $resume=new Resume();
     $resume->first_name=$request->first_name;
     $resume->last_name=$request->last_name;
-    $resume->position =$request->input('position');
+    //for multiple selection in dropdown
+    $designationString=$request->input('designation');
+    $resume->designation= implode(', ',$designationString);
+    //end multiple selection 
+    $resume->experience=$request->experience;
     $resume->phone=$request->phone;
     $resume->email=$request->email;
     $resume->location=$request->location;
@@ -65,17 +94,20 @@ public function store(Request $request)
     }
     $resume->resume=$fileName;    
     //end pdf
+   
     $resume->country=$request->country;
-    $resume->city=$request->city;
     $resume->state=$request->state;
-    $resume->postcode=$request->postcode;
-    $resume->relocate= $request->input('relocate');
+    $resume->district=$request->district;
+    $resume->city=$request->city;
+    $resume->pincode=$request->pincode;
+    $resume->qualification=$request->qualification;
     $resume->education=$request->education;
-    $resume->skills=$request->skills;
+    $resume->dob=$request->dob;
     $resume->summery=$request->summery;
+    // dd($resume);
     $resume->save();
     // return redirect()->route('resume.index')->with('success', 'Resume has been saved successfully.');
-    return back()->with('success', 'Resume is Created Successfully!');
+    return back()->with('success', 'Resume has been submitted succesfully!');
 }
 public function view($id)
 {
@@ -95,7 +127,9 @@ public function update(Request $request,$id)
     $data=Resume::find($id);
     $data->first_name=$request->first_name;
     $data->last_name=$request->last_name;
-    $data->position =$request->input('position');
+    $designationString=$request->input('designation');
+    $data->designation= implode(', ',$designationString);
+    $data->experience=$request->experience;
     $data->phone=$request->phone;
     $data->email=$request->email;
     $data->location=$request->location;
@@ -120,12 +154,13 @@ public function update(Request $request,$id)
     $data->resume=$fileName;    
     //end pdf
     $data->country=$request->country;
-    $data->city=$request->city;
     $data->state=$request->state;
-    $data->postcode=$request->postcode;
-    $data->relocate= $request->input('relocate');
+    $data->district=$request->district;
+    $data->city=$request->city;
+    $data->pincode=$request->pincode;
+    $data->qualification=$request->qualification;
     $data->education=$request->education;
-    $data->skills=$request->skills;
+    $data->dob=$request->dob;
     $data->summery=$request->summery;
     $data->save();
     return redirect()->route('resume.index')->with('success','Resume Updated Sucessfully');    

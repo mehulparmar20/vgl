@@ -365,7 +365,7 @@
               </p>
             </a>
             
-            <a href="{{route('job.create')}}" class="nav-link ">
+            <a href="{{route('job.index')}}" class="nav-link ">
               <i class="nav-icon fas fa-user-plus "></i>
               <p>
                 Jobs
