@@ -14,9 +14,13 @@ class ResumeController extends Controller
 {
     public function index()
     {    $data=Resume::orderBy('id', 'desc')->where('delete_status',1)
-        ->with('country')->get();
+        ->with('countrydata')
+        ->with('statedata')
+        ->with('districtdata')
+        ->with('citydata')
+        ->get();
+        // dd($data->countrydata->country_name);
         // dd($data);
-        
         // foreach ($data as $row) {
             // $countryid= $row->state;
             // $countryName = Country::find($countryid)->country_name; // Replace 'State' with your state model name

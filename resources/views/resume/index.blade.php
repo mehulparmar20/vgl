@@ -14,7 +14,7 @@
         <th scope="col">Mobile</th>
         <th scope="col">Email</th>
         <th scope="col">Location</th>
-        <th scope="col">Country</th>
+        {{-- <th scope="col">Country</th> --}}
         <th scope="col">State</th>
         <th scope="col">District</th>
         <th scope="col">City</th>
@@ -41,10 +41,11 @@
         <td>{{$row->phone}}</td>
         <td>{{$row->email}}</td>
         <td>{{$row->location}}</td>
-        <td>{{$row->country}}</td>
-        <td>{{$row->state}}</td>
-        <td>{{$row->district}}</td>
-        <td>{{$row->city}}</td>
+        {{-- <td>{{$row->country}}</td> --}}
+        <td>{{@$row->countrydata->country_name}}</td>
+        <td>{{@$row->statedata->name}}</td>
+        <td>{{@$row->districtdata->district_name}}</td>
+        <td>{{@$row->citydata->city_name}}</td>
        
         {{-- <td>
        <img src="{{asset('storage/'.$row->profile) }}"width="50"height="50" 
