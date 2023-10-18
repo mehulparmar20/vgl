@@ -63,6 +63,7 @@ Route::get('/vgl', [JobController::class, 'frontindex'])->name('vgl');
 Route::get('resume-create', [ResumeController::class,'create'])->name('resume.create');
 Route::post('resume-store', [ResumeController::class, 'store'])->name('resume-store');
 
+Route::get('term', [DashboardController::class,'term'])->name('term');
 // Route::get('city', [DashboardController::class,'index'])->name('city');
 // Route::post('/getState', [DashboardController::class,'getState']);
 // // Route::post('/getdistrict', [DashboardController::class,'getDistrict']);

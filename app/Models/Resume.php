@@ -10,7 +10,19 @@ class Resume extends Model
     use HasFactory;
     protected $table="resume";
     protected $fillable = ['position'];
-    
+//     public $fillable = [
+//       'first_name',
+//       'last_name',
+//       'designation',
+//       'experience',
+//       'phone',
+//       'country',
+//       'state',
+//       'district',
+//       'city',
+//       'dob',
+      
+//   ];
  public function country()
  {
     return $this->belongsTo(Country::class,'id','id');

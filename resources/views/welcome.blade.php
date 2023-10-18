@@ -12,7 +12,7 @@
 </head>
 <body> --}}
     <div class="container">
-      <a class="btn btn-success" href="{{route('job.create')}}">Add Form</a><br>
+      <a class="btn btn-success" href="{{route('resume.create')}}">Apply</a><br>
 <table  class="table table-striped table-light table-bordered"id="jobtable"><br>
     <thead>
       <tr>

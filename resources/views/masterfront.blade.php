@@ -32,7 +32,11 @@
                         <li class="nav-item"><a class="nav-link active" href="{{route('welcome')}}">Home</a></li>
                         <li class="nav-item"><a class="nav-link active" href="{{route('resume.create')}}">Job</a></li>
                         <li class="nav-item"><a class="nav-link active" href="#"></a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{url('/login')}}">Log-In</a></li>
+                        @if(Auth::check())
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{url('/logout')}}">LogOut</a></li>
+                        @else
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{url('/login')}}">Log-In</a></li>                     
+                    @endif
                     </ul>
                 </div>
             </div>

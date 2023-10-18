@@ -16,7 +16,7 @@ class JobController extends Controller
         // $startdate=Job::get('startdate');
         // $enddate=Job::get('enddate');
         $startdate = '2023-10-17';  // Replace with your actual start date
-        $enddate = '2023-10-21'; 
+        $enddate = '2023-10-23'; 
         $data = Job::whereDate('startdate', '>=', $startdate)
                    ->whereDate('enddate', '<=', $enddate)
                    ->get();
@@ -27,7 +27,9 @@ class JobController extends Controller
     }
     public function index()
     {
-        $data=Job::orderBy('id', 'desc')->where('delete_status',1)->get();
+        $data=Job::orderBy('id', 'desc')
+        // ->where('delete_status',1)
+        ->get();
         return view('job.index',compact('data'));
     }
     public function view2()

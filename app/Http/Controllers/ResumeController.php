@@ -50,7 +50,7 @@ public function store(Request $request)
         'phone' => 'required',
         'email' => 'required',
         'experience' => 'required|integer',
-        'country' => 'required',
+        // 'country' => 'required',
         'city' => 'required',
         'district' => 'required',
         'state' => 'required',
@@ -95,7 +95,7 @@ public function store(Request $request)
     $resume->resume=$fileName;    
     //end pdf
    
-    $resume->country=$request->country;
+    // $resume->country=$request->country;
     $resume->state=$request->state;
     $resume->district=$request->district;
     $resume->city=$request->city;
@@ -153,7 +153,7 @@ public function update(Request $request,$id)
     }
     $data->resume=$fileName;    
     //end pdf
-    $data->country=$request->country;
+    // $data->country=$request->country;
     $data->state=$request->state;
     $data->district=$request->district;
     $data->city=$request->city;
