@@ -59,11 +59,11 @@ Route::get('view2', [JobController::class,'view2'])->name('job.view2');
 });
 Route::get('view1/{id}', [JobController::class, 'view1'])->name('job.view1');
 Route::get('/', [JobController::class, 'frontindex'])->name('welcome');
-// Route::get('/vgl', [JobController::class, 'index1'])->name('vgl');
+Route::get('/vgl', [JobController::class, 'frontindex'])->name('vgl');
 Route::get('resume-create', [ResumeController::class,'create'])->name('resume.create');
 Route::post('resume-store', [ResumeController::class, 'store'])->name('resume-store');
 
-Route::get('city', [DashboardController::class,'index'])->name('city');
-Route::post('/getState', [DashboardController::class,'getState']);
-// Route::post('/getdistrict', [DashboardController::class,'getDistrict']);
-Route::post('/getCity', [DashboardController::class,'getCity']);
+// Route::get('city', [DashboardController::class,'index'])->name('city');
+// Route::post('/getState', [DashboardController::class,'getState']);
+// // Route::post('/getdistrict', [DashboardController::class,'getDistrict']);
+// Route::post('/getCity', [DashboardController::class,'getCity']);

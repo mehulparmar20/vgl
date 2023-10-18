@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -29,7 +29,7 @@
 		{{-- <select id="district" class="form-control" >
 			<option value="">Select District</option>
 		</select>
-		<br/> --}}
+		<br/> 
 		<select id="city" class="form-control" >
 			<option value="">Select City</option>
 		</select>
@@ -90,4 +90,4 @@
   </body>
 </html>
 		
-		
+		 --}}
