@@ -156,11 +156,7 @@
   <link rel="stylesheet" href="{{url('dist/css/adminlte.min.css')}}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
- {{-- csv link --}}
- <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
-
- {{-- <link href="{{URL::to('/public/assets/plugins/datatable/css/dataTables.bootstrap5.min.css"')}}"rel="stylesheet" /> --}}
+ 
 
 </head>
 <!--
@@ -1066,16 +1062,10 @@
 <!-- OPTIONAL SCRIPTS -->
 {{-- <script src="{{url('plugins/chart.js/Chart.min.js')}}"></script> --}}
 <!-- AdminLTE for demo purposes -->
-<script src="{{url('dist/js/demo.js')}}"></script>
+{{-- <script src="{{url('dist/js/demo.js')}}"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{url('dist/js/pages/dashboard3.js')}}"></script>
-{{-- csv button link --}}
-{{-- <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script> --}}
-{{-- csv button end --}}
+
 {{-- datatable --}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" type="text/css"
@@ -1087,14 +1077,14 @@ src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 {{--ckeditor and sweetalert cdn --}}
 <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-   {{-- <script src="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"></script>  --}}
+   <script src="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"></script>  --}}
     {{-- <script>
       ClassicEditor
           .create( document.querySelector('#edit_description,#create_description,#update_summary'))
           .catch( error => {
               console.error( error );
           } );
-  </script> --}}
+  </script>
   @if (session('success'))
   <script>
       swal("Done!", "{{ session('success') }}", "success");
@@ -1120,13 +1110,8 @@ src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
         });
     });
 </script>
-{{-- end datatable --}}<script>
-$('.data_table').DataTable( {
-  dom: 'Bfrtip',
-  buttons: [
-      'copy', 'csv', 'excel', 'pdf', 'print'
-  ]
-} );
-</script>
+{{-- end datatable --}}
+
+
 </body>
 </html>

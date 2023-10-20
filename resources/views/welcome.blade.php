@@ -20,6 +20,7 @@
         <th scope="col">ID</th>
         <th scope="col">Title</th>
         <th scope="col">Description</th>
+        <th scope="col">Qualification</th>
         <th scope="col">Category</th>
         <th scope="col">Type</th>
         <th scope="col">Location</th>
@@ -35,6 +36,7 @@
         <th scope="row">{{$row->id}}</th>
         <td>{{$row->title}}</td>
         <td>{!!$row->description!!}</td>
+        <td>{{$row->qualify}}</td>
         <td>{{$row->category}}</td>
         <td>{{$row->type}}</td>
         <td>{{$row->location}}</td>
@@ -58,4 +60,16 @@
 </div></div>
 {{-- </body>
 </html> --}}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    console.log('sss')
+    $('#myTable').DataTable({
+    dom: 'Bfrtip',
+    buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+});
+  });
+</script>
 @endsection

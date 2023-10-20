@@ -66,6 +66,7 @@
         <tr>
             <th>Id</th>
             <th>Job Title</th>
+            <th>Qualification</th>
             <th>Category</th>
             <th>Type</th>
             <th>Location</th>
@@ -76,6 +77,7 @@
         <tr>
             <td>{{$row->id}}</td>
             <td>{{$row->title}}</td>
+            <td>{{$row->qualify}}</td>
             <td>{{$row->category}}</td>
             <td>{{$row->type}}</td>
             <td>{{$row->location}}</td>
