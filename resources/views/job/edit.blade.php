@@ -32,7 +32,7 @@
                         <div class="card-body">
                                 {{-- <div class="row"> --}}
                                     <div class="col-7">
-                                        <label for="first_name" >Title</label>
+                                        <label for="first_name" >Job Title</label>
                                         <input type="text" class="form-control" value="{{$data->title}}" id="create_title"name="title" 
                                         placeholder="Enter Title Name" >
                                         @error('title')
@@ -48,16 +48,12 @@
                                     </div>
 
                                     <div class="col-7">
-                                   <br> <label for="category" class="form-label">Job Category</label>
-                                    <select  type="text" class="form-control" value="{{$data->category}}"name="category"id="create_category" 
-                                    placeholder="Enter category"  >
-                                    <option value="Developer ">Developer </option>
-                                    <option value="ASP.NET">ASP.NET</option>
-                                    <option value="officedevelopment">office development</option>
-                                    </select>
-                                    @error('category')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                                        <label for="category" class="form-label">Job Category</label>
+                                        <input type="text" class="form-control" value="{{$data->category}}" id="update_category"name="category" 
+                                        placeholder="Enter Category Name" >
+                                        @error('category')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-7">
                                     <br><label for="bsValidation9" class="form-label">Job Type</label>

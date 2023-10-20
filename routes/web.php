@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\UserController;
@@ -26,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-
+Route::get('send-mail', [MailController::class, 'index']);
 Route::get('login', [UserController::class, 'index'])->name('login');
 Route::post('custom-login', [UserController::class, 'customLogin'])->name('custom-login'); 
 Route::get('register', [UserController::class, 'register'])->name('user.register');

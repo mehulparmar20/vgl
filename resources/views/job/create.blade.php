@@ -35,7 +35,7 @@
                         <div class="card-body">
                                 {{-- <div class="row"> --}}
                                     <div class="col-7">
-                                        <label for="first_name" >Title</label>
+                                        <label for="first_name" >Job Title</label>
                                         <input type="text" class="form-control" id="create_title"name="title" 
                                         placeholder="Enter Title Name" >
                                         @error('title')
@@ -50,17 +50,33 @@
                                     @enderror
                                     </div>
 
+   
                                     <div class="col-7">
-                                   <br> <label for="category" class="form-label">Job Category</label>
-                                    <select  type="text" class="form-control" name="category"id="create_category" 
+                                        
+                                        <br> <label for="qualify" class="form-label">Higher Qualifiaction</label>
+                                        <input type="text" class="form-control" id="create_qualify"name="qualify" 
+                                        placeholder="Enter Qualification" >
+                                        @error('qualify')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                    </div>
+                                     <div class="col-7">
+                                        
+                                  <br> <label for="category" class="form-label">Job Category</label>
+                                  <input type="text" class="form-control" id="create_category"name="category" 
+                                  placeholder="Enter Category Name" >
+                                  @error('category')
+                                  <div class="text-danger">{{ $message }}</div>
+                              @enderror
+                                  {{--   <select  type="text" class="form-control" name="category"id="create_category" 
                                     placeholder="Enter category"  >
-                                    <option value="Developer ">Developer </option>
+                                    <option value="Developer">Developer </option>
                                     <option value="ASP.NET">ASP.NET</option>
                                     <option value="officedevelopment">office development</option>
                                     </select>
                                     @error('category')
                                     <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                                @enderror--}}
                                 </div>
                                 <div class="col-7">
                                     <br><label for="bsValidation9" class="form-label">Job Type</label>

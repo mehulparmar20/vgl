@@ -1,10 +1,9 @@
 @extends('master')
 @section('content')
 <a class="btn btn-success" href="{{route('resume.create')}}">Add Form</a><br>
-<table  class="table table-striped table-light table-bordered"id="resumetable"><br>
+<table  class="table table-striped table-light table-bordered data_table" id="myTable"><br>
     <thead>
       <tr>
-        
         <th scope="col">ID</th>
         <th scope="col">First Name</th>
         <th scope="col">Last Name</th>
@@ -24,25 +23,32 @@
         <th scope="col">Pincode</th>
         <th scope="col">Qualification</th>
         <th scope="col">Education</th>
-        
-        <th scope="col">MySelf</th>
+        <th scope="col"width="40px">MySelf</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
         @foreach ($data as $row)
       <tr>
-        <th scope="row">{{$row->id}}</th>
+        <td scope="row">{{$row->id}}</td>
         <td>{{$row->first_name}}</td>
         <td>{{$row->last_name}}</td>
         <td>{{$row->dob}}</td>
         <td>{{$row->designation}}</td>
+        {{-- @dd($jobu) --}}
+  {{-- <td> 
+     @foreach($jobu as $j)
+     @foreach($j as $c)
+     {{$c->category}}
+     @endforeach
+     @endforeach 
+  </td> --}}
         <td>{{$row->experience}}</td>
         <td>{{$row->phone}}</td>
         <td>{{$row->email}}</td>
         <td>{{$row->location}}</td>
         {{-- <td>{{$row->country}}</td> --}}
-        <td>{{@$row->countrydata->country_name}}</td>
+        {{-- <td>{{@$row->countrydata->country_name}}</td> --}}
         <td>{{@$row->statedata->name}}</td>
         <td>{{@$row->districtdata->district_name}}</td>
         <td>{{@$row->citydata->city_name}}</td>
@@ -69,3 +75,14 @@
   </table>
 </div>
 @endsection
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    console.log('sss')
+    $('#myTable').DataTable({
+    dom: 'Bfrtip',
+    buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+});
+  });
+</script>

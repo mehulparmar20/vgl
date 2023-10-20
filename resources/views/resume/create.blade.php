@@ -48,22 +48,37 @@
                                      <div class="text-danger">{{ $message }}</div>
                                  @enderror
                                  </div>
-                       
-                                <div class="col-md-5">
+                                 {{-- @dd($design) --}}
+                                 <div class="col-md-5">
+                                    <br> <label for="designation" class="form-label">Designation<span class="text text-danger">*</span></label>
+                                     <select  multiple="multiple" type="text" class="form-control" 
+                                     name="designation[]"id="create_designation" 
+                                     placeholder="Enter Designation"  >
+                                    
+                                     @foreach ($design as $d)
+                                     
+                                  <option value="{{$d->id}}">{{$d->category}}</option>  
+                                    @endforeach
+                                     </select>
+                                     @error('designation')
+                                     <div class="text-danger">{{ $message }}</div>
+                                 @enderror
+                                 </div>
+                                {{-- <div class="col-md-5">
                                    <br> <label for="designation" class="form-label">Designation<span class="text text-danger">*</span></label>
-                                    <select  multiple="multiple"type="text" class="form-control" 
+                                    <select  multiple="multiple" type="text" class="form-control" 
                                     name="designation[]"id="create_designation" 
                                     placeholder="Enter Designation"  >
                                     <option value="Backend">Backend</option>
                                     <option value="Frontend">Frontend</option>
                                     <option value="Fullstack">Full Stack</option>
-                                    <option value="Fullstack">Php Developer</option>
-                                    <option value="Fullstack">Laravel Developer</option>
+                                    <option value="phpdeveloper">Php Developer</option>
+                                    <option value="laravel">Laravel Developer</option>
                                     </select>
                                     @error('designation')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                                </div>
+                                </div> --}}
                                 </div>
                                 <div class="row">
                                 <div class="col-md-5">
@@ -106,18 +121,20 @@
                                    
                                     @foreach ($country as $data)
                                     <option value=""select>Choose below option</option>
-                                    <option value="{{$data->id}}">{{$data->country_name}}</option>  
+                                    <option value="{{$data->id}}">{{$data->country_name}}
+                                        </option>  
                                     @endforeach
                                   </select>
                                     </div> --}}
                                     {{-- @dd($state) --}}
                                 <div class="col-md-5">
-                                    <label for="state" class="form-label">State<span class="text text-danger">*</span></label>
+                                    <label for="state" class="form-label">State
+                                        <span class="text text-danger">*</span></label>
                                     <select  type="text" class="form-control" 
                                     name="state" id="create_state" 
                                     placeholder="Enter State">
                                     {{-- @dd($state) --}}
-                                    <option value=""select>Select Menu</option>
+                                    <option value=""select>Select State</option>
                                     @foreach ($state as $d)
                                   
                                     <option value="{{$d->state_id}}">{{$d->name}}</option>  
@@ -143,11 +160,13 @@
                                 
                                    {{-- @dd($district) --}}
                                     <div class="col-md-5">
-                                        <label for="city" class="form-label">District<span class="text text-danger">*</span></label>
+                                        <label for="city" class="form-label">
+                                            District<span class="text text-danger">*</span>
+                                        </label>
                                         <select  type="text" class="form-control" 
                                     name="district"id="create_district" 
                                     placeholder="Enter District"  >
-                                    <option value=""select>Select Menu</option>
+                                    <option value=""select>Select District</option>
                                     @foreach ($district as $data)
                                   
                                     <option value="{{$data->district_id}}">{{$data->district_name}}</option>  
@@ -162,6 +181,7 @@
                                 <div class="row">
                                     {{-- @dd($city) --}}
                                     <div class="col-md-5">
+                                        <br>
                                     <label for="city" class="form-label">City<span class="text text-danger">*</span></label>
                                     <select  type="text" class="form-control" 
                                 name="city"id="create_city" 

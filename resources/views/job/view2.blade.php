@@ -65,7 +65,7 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Title</th>
+            <th>Job Title</th>
             <th>Category</th>
             <th>Type</th>
             <th>Location</th>
