@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body> --}}
-    <div class="container">
-      <a class="btn btn-success" href="{{route('resume.create')}}">Apply</a><br>
+    <div class="container"style="margin-bottom: 20px;">
+      <a class="btn btn-success" href="{{route('resume.create')}}" style="margin-top: 20px;">Apply</a><br>
 <table  class="table table-striped table-light table-bordered"id="jobtable"><br>
     <thead>
       <tr>

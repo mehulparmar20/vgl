@@ -60,22 +60,22 @@ public function store(Request $request)
 {
 //    dd($request); 
     $request->validate([
-        // 'first_name' => 'required',
-        // 'last_name' => 'required',
-        // 'designation' => 'required',
-        // 'phone' => 'required',
-        // 'email' => 'required',
-        // 'experience' => 'required|integer',
-        // // 'country' => 'required',
-        // 'city' => 'required',
-        // 'district' => 'required',
-        // 'state' => 'required',
-        // 'pincode' => 'required',
-        // 'qualification' => 'required',
-        // // 'profile' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:2048',
-        // // 'resume' => 'required|file|mimes:pdf,jpg,jpeg,png,gif',
-        // 'resume' => 'required|file|mimetypes:application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-        // // Define rules for other fields here
+        'first_name' => 'required',
+        'last_name' => 'required',
+        'designation' => 'required',
+        'phone' => 'required',
+        'email' => 'required',
+        'experience' => 'required|integer',
+        // 'country' => 'required',
+        'city' => 'required',
+        'district' => 'required',
+        'state' => 'required',
+        'pincode' => 'required',
+        'qualification' => 'required',
+        // 'profile' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:2048',
+        // 'resume' => 'required|file|mimes:pdf,jpg,jpeg,png,gif',
+        'resume' => 'required|file|mimetypes:application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+        // Define rules for other fields here
     ]);
     // dd($request);
     // dd($request->all());
