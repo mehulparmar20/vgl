@@ -46,6 +46,15 @@
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                     </div>
+                                    <div class="col-7">
+                                    <br> <label for="qualify" class="form-label">Higher Qualifiaction</label>
+                                        <input type="text" class="form-control" id="create_qualify"name="qualify" 
+                                        placeholder="Enter Qualification" value="{{$data->qualify}}">
+                                        @error('qualify')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                    
+                                </div>
 
                                     <div class="col-7">
                                         <label for="category" class="form-label">Job Category</label>

@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Storage;
 
 class ResumeController extends Controller
 {
+    public function view2()
+    {
+        $data =Resume::get()->where('delete_status',0);
+        // dd($data);
+        return view('resume.view2',compact('data'));
+    }
     public function index()
     {
         $data = Resume::orderBy('id','desc')

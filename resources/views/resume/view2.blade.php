@@ -14,7 +14,7 @@
   <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left"><br>
-            <h4 class="m-0">Cancel Job Details</h4>
+            <h4 class="m-0">Cancel Resume Details</h4>
         </div>
         <div class="pull-right">
             {{-- <a class="btn btn-primary" href="{{route('welcome')}}">Apply Job</a> --}}
@@ -64,23 +64,32 @@
 <table class="table table-striped table-light table-bordered" id="canceljob">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Job Title</th>
-            <th>Qualification</th>
-            <th>Category</th>
-            <th>Type</th>
-            <th>Location</th>
+            <th scope="col">ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Designation</th>
+             <th scope="col">Location</th>
+             <th scope="col">State</th>
+            <th scope="col">District</th>
+            <th scope="col">City</th>
+            <th scope="col">Education</th>
+            <th scope="col"width="40px">MySelf</th>
         </tr>
     </thead>
     <tbody>
         @foreach($data as $row)
         <tr>
-            <td>{{$row->id}}</td>
-            <td>{{$row->title}}</td>
-            <td>{{$row->qualify}}</td>
-            <td>{{$row->category}}</td>
-            <td>{{$row->type}}</td>
+            <td scope="row">{{$row->id}}</td>
+            <td>{{$row->first_name}}</td>
+            <td>{{$row->last_name}}</td>
+            <td>{{$row->designation}}</td>
             <td>{{$row->location}}</td>
+           <td>{{@$row->statedata->name}}</td>
+            <td>{{@$row->districtdata->district_name}}</td>
+            <td>{{@$row->citydata->city_name}}</td>
+            <td>{{$row->education}}</td>
+            <td>{!!$row->summery!!}</td>
+            
         </tr>
         @endforeach
     </tbody>

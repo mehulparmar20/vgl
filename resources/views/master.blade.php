@@ -359,9 +359,8 @@
             <a href="{{route('resume.index')}}" class="nav-link ">
               
               <i class="nav-icon fas fa-users"></i> 
-              
               <p>
-                Applicant
+                Applicants
                 {{-- <i class="right fas fa-angle-left"></i> --}}
               </p>
             </a>
@@ -379,6 +378,13 @@
               <i class="nav-icon fas fa-bell "></i>
               <p>
                 Cancel Job
+                {{-- <i class="right fas fa-angle-left"></i> --}}
+              </p>
+            </a>
+            <a href="{{route('resume.view2')}}" class="nav-link ">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Cancel Resume 
                 {{-- <i class="right fas fa-angle-left"></i> --}}
               </p>
             </a>
@@ -1078,7 +1084,7 @@ src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    <script src="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"></script>  --}}
-    {{-- <script>
+    <script>
       ClassicEditor
           .create( document.querySelector('#edit_description,#create_description,#update_summary'))
           .catch( error => {
@@ -1090,22 +1096,16 @@ src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
       swal("Done!", "{{ session('success') }}", "success");
   </script>
 @endif
-  {{-- end ckeditor for edit --}}
-<script>
+  {{-- end ckeditor for edit--}}
+ <script>
     $(document).ready(function() {
         // Initialize DataTables
-        $('#resumetable,#jobu1').DataTable({
+        $('#resumetable,#jobu1,#canceljob').DataTable({
             "paging": true,  // Enable pagination
             "ordering": true,  // Enable sorting
             "searching": true, // Enable searching
             "order": [[0, "desc"]],
-        //     dom: 'Bfrtip',
-        //    buttons: [
-        //     'copyHtml5',
-        //     'excelHtml5',
-        //     'csvHtml5',
-        //     'pdfHtml5'
-        // ]
+       
             // Add more optionsx` as needed
         });
     });
