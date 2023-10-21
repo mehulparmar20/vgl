@@ -13,13 +13,14 @@
 <body> --}}
     <div class="container">
       <a class="btn btn-success" href="{{route('job.create')}}">Add Form</a><br>
-<table  class="table table-striped table-light table-bordered"id="jobtable"><br>
+<table  class="table table-striped table-light table-bordered"id="jobu1"><br>
     <thead>
       <tr>
         
         <th scope="col">ID</th>
-        <th scope="col">Title</th>
-        <th scope="col">Description</th>
+        <th scope="col">Job Title</th>
+        <th scope="col"width="10px">Description</th>
+        <th scope="col">Qualification</th>
         <th scope="col">Category</th>
         <th scope="col">Type</th>
         <th scope="col">Location</th>
@@ -35,6 +36,7 @@
         <th scope="row">{{$row->id}}</th>
         <td>{{$row->title}}</td>
         <td>{!!$row->description!!}</td>
+        <td>{{$row->qualify}}</td>
         <td>{{$row->category}}</td>
         <td>{{$row->type}}</td>
         <td>{{$row->location}}</td>

@@ -10,22 +10,34 @@ class Resume extends Model
     use HasFactory;
     protected $table="resume";
     protected $fillable = ['position'];
-    
- public function country()
+//     public $fillable = [
+//       'first_name',
+//       'last_name',
+//       'designation',
+//       'experience',
+//       'phone',
+//       'country',
+//       'state',
+//       'district',
+//       'city',
+//       'dob',
+      
+//   ];
+ public function countrydata()
  {
-    return $this->belongsTo(Country::class,'id','id');
+    return $this->belongsTo(Country::class,'country','id');
  }
- public function state()
+ public function statedata()
  {
-    return $this->belongsTo(State::class,'id','state_id');
+    return $this->belongsTo(State::class,'state','state_id');
  }
- public function district()
+ public function districtdata()
  {
-    return $this->belongsTo(District::class,'id','district_id');
+    return $this->belongsTo(District::class,'district','district_id');
  }
- public function city()
+ public function citydata()
  {
-    return $this->belongsTo(City::class,'id','city_id');
+    return $this->belongsTo(City::class,'city','city_id');
  
    } 
 }

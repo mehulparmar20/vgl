@@ -46,14 +46,17 @@
                                  </div>
     
                                 <div class="col-md-5">
-                                   <br> <label for="position" class="form-label">Designation</label>
-                                    <select  type="text" class="form-control" value="{{$data->designation}}" name="designation"id="update_designation" 
+                                   <br> <label for="designation" class="form-label">Designation</label>
+                                    <select  type="text" class="form-control" multiple="multiple" name="designation[]"id="update_designation" 
                                     placeholder="Enter Designation"  >
+                                    {{-- <option value="{{$data->designation}}">{{$data->designation}}</option> --}}
                                     <option value="Backend">Backend</option>
                                     <option value="Frontend">Frontend</option>
                                     <option value="Fullstack">Full Stack</option>
+                                    <option value="phpdeveloper">Php Developer</option>
+                                    <option value="laravel">Laravel Developer</option>
                                     </select>
-                                    @error('position')
+                                    @error('designation')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                                 </div></div>
@@ -89,25 +92,48 @@
                                 @enderror
                                 </div>
                                 </div>
+                                {{-- @dd($state) --}}
+                              
                                 <div class="row">
-                                    <div class="col-md-5">
-                                        <br>   <label for="city" class="form-label">City</label>
-                                        <input type="text" class="form-control" value="{{$data->city}}"id="update_city"name="city" placeholder="Enter City"  >
-                                        @error('city')
+                                    <div class="col-md-5"> 
+                                        <label for="state" class="form-label">State
+                                            <span class="text text-danger">*</span></label>
+                                           
+                                            <select  type="text" class="form-control" 
+                                        name="state" id="update_state" 
+                                        placeholder="Enter State">
+                                        @foreach ($state as $d)
+                                      
+                                        <option value="{{$d->state_id}}"@if($d->name==$data->statedata->name) selected @endif>{{$d->name}}</option>
+                                        @endforeach
+                                        
+                                        </select>
+                                       
+                                        @error('state')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                     </div>
-                                    
-                                <div class="col-md-5">
-                                    <br>   <label for="state" class="form-label">State</label>
-                                    <input type="text" class="form-control" value="{{$data->state}}" id="update_state"name="state" placeholder="Enter State"  >
-                                    @error('state')
+                                   
+                                    <div class="col-md-5">
+                                      
+                                        <label for="district" class="form-label">
+                                            District<span class="text text-danger">*</span>
+                                        </label>
+                                        <select  type="text" class="form-control" 
+                                    name="district"id="create_district" 
+                                    placeholder="Enter District"  >
+                                   @foreach ($district as $d)
+                        
+                                    <option value="{{$d->district_id}}"@if($d->district_name==$data->districtdata->district_name) selected @endif>{{$d->district_name}}</option>  
+                                    @endforeach
+                                    </select>
+                                    @error('district')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
+                                    </div>
                                 </div>
-                                </div>
-                              
                                
+                                 
                                {{-- <div class="col-md-5">
                                     <br><label for="profile" class="form-label">Profile</label>
                                     <input type="file" class="form-control" 
@@ -117,15 +143,22 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                                 </div> --}}
-                               
+                      
                                 <div class="row">
-                                    <div class="col-md-5">
-                                        <br><label for="country" class="form-label">Country</label>
-                                        <input type="text" class="form-control" value="{{$data->country}}" id="update_country"name="country" placeholder="Enter Country"  >
-                                        @error('country')
+                                    <div class="col-md-5"><br>
+                                        <label for="city" class="form-label">City<span class="text text-danger">*</span></label>
+                                        <select  type="text" class="form-control" 
+                                    name="city"id="create_city" 
+                                    placeholder="Enter City"  >
+                                    @foreach ($city as $d)
+                                  <option value="{{$d->city_id}}"@if($d->city_name==$data->citydata->city_name) selected @endif>{{$d->city_name}}</option>  
+                                    @endforeach 
+                                    
+                                    </select>
+                                    @error('city')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
-                                    </div>
+                                        </div>
                                     
                                 <div class="col-md-5">
                                     <br> <label for="resume" class="form-label">Resume</label>

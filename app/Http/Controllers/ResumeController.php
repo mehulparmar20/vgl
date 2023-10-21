@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DemoMail;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\District;
+use App\Models\Job;
 use App\Models\Resume;
 use App\Models\State;
 use Illuminate\Http\Request;
@@ -12,23 +14,36 @@ use Illuminate\Support\Facades\Storage;
 
 class ResumeController extends Controller
 {
-    public function index()
-    {    $data=Resume::orderBy('id', 'desc')->where('delete_status',1)
-        ->with('country')->get();
+    public function view2()
+    {
+        $data =Resume::get()->where('delete_status',0);
         // dd($data);
-        
-        // foreach ($data as $row) {
-            // $countryid= $row->state;
-            // $countryName = Country::find($countryid)->country_name; // Replace 'State' with your state model name
-            //  $row->country =$countryName;
-            // dd($countryName);
-        // }
-        // dd($data);
-        // $data =Resume::orderBy('id', 'desc')->where('delete_status',1)->get();
-        // dd($data);
-       // $data=Resume::all();
-        return view('resume.index',compact('data'));
+        return view('resume.view2',compact('data'));
     }
+    public function index()
+    {
+        $data = Resume::orderBy('id','desc')
+        
+            ->where('delete_status', 1)
+            ->with('countrydata')
+            ->with('statedata')
+            ->with('districtdata')
+            ->with('citydata')
+            ->get();
+            // dd($data);
+        // // $jobs = [];
+        // foreach ($data as $resume) {
+          
+        //     $values = explode(', ', $resume->designation);//5,6
+            
+        //     $jobsForResume = Job::whereIn('id', $values)->get();//5,6 data from job
+        //     // dd($resume->id);
+        //     $jobu[$resume->id] = $jobsForResume;//resume chya id la job data give
+        //     // dd($jobu);
+        // }
+        return view('resume.index', compact('data'));
+    }
+    
 public function create()
 {
     
@@ -37,8 +52,9 @@ public function create()
     // dd($state);
     $district=District::all();
     $city=City::all();
-//    dd($city);
- return view('resume.create',compact('country','state','district','city'));
+    $design=Job::select('category')->get();
+//    dd($design);
+ return view('resume.create',compact('country','state','district','city','design'));
 }
 public function store(Request $request)
 {
@@ -50,7 +66,7 @@ public function store(Request $request)
         'phone' => 'required',
         'email' => 'required',
         'experience' => 'required|integer',
-        'country' => 'required',
+        // 'country' => 'required',
         'city' => 'required',
         'district' => 'required',
         'state' => 'required',
@@ -67,9 +83,13 @@ public function store(Request $request)
     $resume->first_name=$request->first_name;
     $resume->last_name=$request->last_name;
     //for multiple selection in dropdown
+
+     $resume->designation=$request->designation;
+    // dd($request);
     $designationString=$request->input('designation');
     $resume->designation= implode(', ',$designationString);
     //end multiple selection 
+// dd($resume->designation);
     $resume->experience=$request->experience;
     $resume->phone=$request->phone;
     $resume->email=$request->email;
@@ -95,7 +115,7 @@ public function store(Request $request)
     $resume->resume=$fileName;    
     //end pdf
    
-    $resume->country=$request->country;
+    // $resume->country=$request->country;
     $resume->state=$request->state;
     $resume->district=$request->district;
     $resume->city=$request->city;
@@ -106,6 +126,14 @@ public function store(Request $request)
     $resume->summery=$request->summery;
     // dd($resume);
     $resume->save();
+    $email = 'veravalonline@gmail.com';
+    $mailData=[
+        'title'=>'Mail From VeravalOnline',
+        'body'=>'This is for Resume Created Successfully',
+
+    ];
+    Mail::to($email)->send(new DemoMail($mailData));
+    // dd('send');
     // return redirect()->route('resume.index')->with('success', 'Resume has been saved successfully.');
     return back()->with('success', 'Resume has been submitted succesfully!');
 }
@@ -118,9 +146,13 @@ public function view($id)
 }
 public function edit($id)
 {
-    $data=Resume::find($id);
-    // dd($data);
-    return view('resume.edit',compact('data'));
+    $data = Resume::with('countrydata','statedata','citydata','districtdata')->find($id);
+    //  dd($data);
+    $country=Country::all();
+    $state=State::all();
+    $district=District::all();
+    $city=City::all();
+    return view('resume.edit',compact('data','country','state','district','city'));
 }
 public function update(Request $request,$id)
 {
@@ -153,7 +185,7 @@ public function update(Request $request,$id)
     }
     $data->resume=$fileName;    
     //end pdf
-    $data->country=$request->country;
+    // $data->country=$request->country;
     $data->state=$request->state;
     $data->district=$request->district;
     $data->city=$request->city;

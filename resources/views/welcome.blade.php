@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body> --}}
-    <div class="container">
-      <a class="btn btn-success" href="{{route('job.create')}}">Add Form</a><br>
+    <div class="container"style="margin-bottom: 20px;">
+      <a class="btn btn-success" href="{{route('resume.create')}}" style="margin-top: 20px;">Apply</a><br>
 <table  class="table table-striped table-light table-bordered"id="jobtable"><br>
     <thead>
       <tr>
@@ -20,6 +20,7 @@
         <th scope="col">ID</th>
         <th scope="col">Title</th>
         <th scope="col">Description</th>
+        <th scope="col">Qualification</th>
         <th scope="col">Category</th>
         <th scope="col">Type</th>
         <th scope="col">Location</th>
@@ -35,6 +36,7 @@
         <th scope="row">{{$row->id}}</th>
         <td>{{$row->title}}</td>
         <td>{!!$row->description!!}</td>
+        <td>{{$row->qualify}}</td>
         <td>{{$row->category}}</td>
         <td>{{$row->type}}</td>
         <td>{{$row->location}}</td>
@@ -58,4 +60,16 @@
 </div></div>
 {{-- </body>
 </html> --}}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    console.log('sss')
+    $('#myTable').DataTable({
+    dom: 'Bfrtip',
+    buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+});
+  });
+</script>
 @endsection

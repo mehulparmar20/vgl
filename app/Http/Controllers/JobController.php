@@ -16,7 +16,7 @@ class JobController extends Controller
         // $startdate=Job::get('startdate');
         // $enddate=Job::get('enddate');
         $startdate = '2023-10-17';  // Replace with your actual start date
-        $enddate = '2023-10-21'; 
+        $enddate = '2023-10-23'; 
         $data = Job::whereDate('startdate', '>=', $startdate)
                    ->whereDate('enddate', '<=', $enddate)
                    ->get();
@@ -27,7 +27,9 @@ class JobController extends Controller
     }
     public function index()
     {
-        $data=Job::orderBy('id', 'desc')->where('delete_status',1)->get();
+        $data=Job::orderBy('id', 'desc')
+        // ->where('delete_status',1)
+        ->get();
         return view('job.index',compact('data'));
     }
     public function view2()
@@ -46,6 +48,7 @@ class JobController extends Controller
     $request->validate([
         'title' => 'required',
         'description' => 'required',
+        'qualify'=>'required',
         'category' => 'required',
         'type' => 'required',
         'location' => 'required',
@@ -56,7 +59,9 @@ class JobController extends Controller
     $job=new Job();
     $job->title=$request->title;
     $job->description=$request->description;
-    $job->category=$request->input('category');
+    $job->qualify=$request->qualify;
+    // $job->category=$request->input('category');
+    $job->category=$request->category;
     $job->type=$request->input('type');
     $job->location=$request->location;
     $job->startdate=$request->startdate;
@@ -83,7 +88,8 @@ public function update(Request $request,$id)
     $data=Job::find($id);
     $data->title=$request->title;
     $data->description=$request->description;
-    $data->category=$request->input('category');
+    $data->qualify=$request->qualify;
+    $data->category=$request->category;
     $data->type=$request->input('type');
     $data->location=$request->location;
     $data->startdate=$request->startdate;

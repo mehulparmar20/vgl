@@ -156,7 +156,8 @@
   <link rel="stylesheet" href="{{url('dist/css/adminlte.min.css')}}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  {{-- <link href="{{url('plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" /> --}}
+ 
+
 </head>
 <!--
 `body` tag options:
@@ -358,9 +359,8 @@
             <a href="{{route('resume.index')}}" class="nav-link ">
               
               <i class="nav-icon fas fa-users"></i> 
-              
               <p>
-                Applicant
+                Applicants
                 {{-- <i class="right fas fa-angle-left"></i> --}}
               </p>
             </a>
@@ -378,6 +378,13 @@
               <i class="nav-icon fas fa-bell "></i>
               <p>
                 Cancel Job
+                {{-- <i class="right fas fa-angle-left"></i> --}}
+              </p>
+            </a>
+            <a href="{{route('resume.view2')}}" class="nav-link ">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Cancel Resume 
                 {{-- <i class="right fas fa-angle-left"></i> --}}
               </p>
             </a>
@@ -1008,6 +1015,7 @@
       </nav>
       <!-- /.sidebar-menu -->
     </div>
+  
     <!-- /.sidebar -->
   </aside>
 
@@ -1058,9 +1066,9 @@
 <script src="{{url('dist/js/adminlte.js')}}"></script>
 
 <!-- OPTIONAL SCRIPTS -->
-<script src="{{url('plugins/chart.js/Chart.min.js')}}"></script>
+{{-- <script src="{{url('plugins/chart.js/Chart.min.js')}}"></script> --}}
 <!-- AdminLTE for demo purposes -->
-<script src="{{url('dist/js/demo.js')}}"></script>
+{{-- <script src="{{url('dist/js/demo.js')}}"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{url('dist/js/pages/dashboard3.js')}}"></script>
 
@@ -1075,9 +1083,10 @@ src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 {{--ckeditor and sweetalert cdn --}}
 <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <script src="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"></script>  --}}
     <script>
       ClassicEditor
-          .create( document.querySelector( '#edit_description,#create_description,#update_summary') )
+          .create( document.querySelector('#edit_description,#create_description,#update_summary'))
           .catch( error => {
               console.error( error );
           } );
@@ -1087,19 +1096,22 @@ src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
       swal("Done!", "{{ session('success') }}", "success");
   </script>
 @endif
-  {{-- end ckeditor for edit --}}
-<script>
+  {{-- end ckeditor for edit--}}
+ <script>
     $(document).ready(function() {
         // Initialize DataTables
-        $('#resumetable').DataTable({
+        $('#resumetable,#jobu1,#canceljob,#create_summary').DataTable({
             "paging": true,  // Enable pagination
             "ordering": true,  // Enable sorting
             "searching": true, // Enable searching
-            // Add more options as needed
+            "order": [[0, "desc"]],
+       
+            // Add more optionsx` as needed
         });
     });
 </script>
 {{-- end datatable --}}
+
 
 </body>
 </html>

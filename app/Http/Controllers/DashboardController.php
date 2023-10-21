@@ -18,6 +18,10 @@ class DashboardController extends Controller
 		$count['sell'] = 0;
 		return view('dashboard',compact('count'));
 	}
+	public function term()
+	{
+		return view('term');
+	}
 // 	public function city()
 // 	{
 // 		return view('city');
