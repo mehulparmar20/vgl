@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -466,7 +467,7 @@ div.tabcontents {
     -webkit-box-shadow: 0px 16px 5px 0px rgba(0,0,0,0.23);
     -moz-box-shadow: 0px 16px 5px 0px rgba(0,0,0,0.23);
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.23);
-	width:864px;
+	width:100%;
 	float:left;
     margin-bottom: 20px;
 	
@@ -1733,9 +1734,15 @@ span.info,.info span strong a{position: relative;display: block;text-decoration:
          <div class="top-menu">
             <div class="h_mnu_01">
                <ul>
-                   <li><a  href="{{route('welcome')}}">Home</a></li>																			
-                  <li><a href="{{route('resume.create')}}">Job</a></li>
-                  <li><a target="_blank" href="{{url('/login')}}">Log-In</a></li>
+                <li><a  href="{{route('welcome')}}">Home</a></li>																			
+                <li><a href="{{route('resume.create')}}">Apply</a></li>
+                @if(Auth::check())
+                <li><a target="_blank" href="{{url('/logout')}}">Log Out</a></li>
+                <li><a target="_blank" href="{{url('/dashboard')}}">Dashboard</a></li>
+              @else
+             
+              <li><a target="_blank" href="{{url('/login')}}">Log-In</a></li>
+              @endif
 
                  
             </div>
@@ -1863,12 +1870,12 @@ span.info,.info span strong a{position: relative;display: block;text-decoration:
          
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <!-- <div class="col-md-3">
     <div class="sidebar">
         
-      <!-- <img src="{{asset('images/VGL-Corporate-Office.jpg')}}" height="189" width="250" class="img-set"> -->
+   
           <h2 class="head-desk-link">Quick Links</h2>
-          <!-- <img class="uline-link"   src="{{asset('images/uline.png')}}"> -->
+        
           <div class="links">
         
           
@@ -1878,8 +1885,8 @@ span.info,.info span strong a{position: relative;display: block;text-decoration:
           </div>
         
       </div>
-    </div>
-    <div class="col-md-9">
+    </div> -->
+    <div class="col-md-12">
     <div class="main-content">
       <div class="con-box">
               
@@ -2022,6 +2029,7 @@ src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
             "paging": true,  // Enable pagination
             "ordering": true,  // Enable sorting
             "searching": true, // Enable searching
+            "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
             // Add more options as needed
         });
     });
