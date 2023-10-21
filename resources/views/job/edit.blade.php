@@ -126,9 +126,14 @@
                             @enderror
                         </div>
                         <div class="col-6">
-                            <label for="description" class="form-label">Description</label>
+                            <!-- <label for="description" class="form-label">Description</label>
                             <textarea class="form-control" id="edit_description" name="description" rows="3">{!!$data->description!!}</textarea>
                             @error('description')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror -->
+                            <br><label for="location" class="form-label">Location</label>
+                            <input type="text" class="form-control" value="{{$data->location}}" id="create_location" name="location" placeholder="Enter Location">
+                            @error('location')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -168,11 +173,20 @@
                             </select>
                         </div>
                         <div class="col-6">
-                            <br><label for="location" class="form-label">Location</label>
-                            <input type="text" class="form-control" value="{{$data->location}}" id="create_location" name="location" placeholder="Enter Location">
-                            @error('location')
-                            <div class="text-danger">{{ $message }}</div>
-                            @enderror
+                           
+
+                         
+                        <br><label for="location" class="form-label">Job Duration</label>
+                        <label for="startdate" class="form-label">Start Date</label>
+                        <input type="date" class="form-control" id="create_startdate" value="{{$data->startdate}}" name="startdate" placeholder="Enter Startdate">
+
+
+
+
+
+                
+
+                         
                         </div>
 
                     </div>
@@ -182,16 +196,8 @@
 
 
                 <div class="row" style="padding: 19px; margin-top: -30px;">
-                    <div class="col-6">
-                        <br><label for="location" class="form-label">Job Duration</label>
-                        <label for="startdate" class="form-label">Start Date</label>
-                        <input type="date" class="form-control" id="create_startdate" value="{{$data->startdate}}" name="startdate" placeholder="Enter Startdate">
 
-
-
-
-
-                    </div>
+                      
                     <div class="col-6">
 
                         <br><label for="location" class="form-label">Job Duration</label>
@@ -203,6 +209,15 @@
 
 
 
+                    </div>
+
+
+                    <div class="col-6">
+                         <br/><label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="edit_description" name="description" rows="3">{!!$data->description!!}</textarea>
+                            @error('description')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
                     </div>
 
                 </div>

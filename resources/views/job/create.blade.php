@@ -43,11 +43,16 @@
                              @enderror
                          </div>
                          <div class="col-6">
-                             <label for="description" class="form-label">Description</label>
+                             <!-- <label for="description" class="form-label">Description</label>
                              <textarea class="form-control" name="description" id="create_description" rows="3"></textarea>
                              @error('description')
                              <div class="text-danger">{{ $message }}</div>
-                             @enderror
+                             @enderror -->
+                             <label for="location" class="form-label">Location</label>
+                     <input type="text" class="form-control" id="create_location" name="location" placeholder="Enter Location">
+                     @error('location')
+                     <div class="text-danger">{{ $message }}</div>
+                     @enderror
                          </div>
                      </div>
 
@@ -100,11 +105,17 @@
 
 
                  <div class="col-6">
-                     <br><label for="location" class="form-label">Location</label>
+                     <!-- <br><label for="location" class="form-label">Location</label>
                      <input type="text" class="form-control" id="create_location" name="location" placeholder="Enter Location">
                      @error('location')
                      <div class="text-danger">{{ $message }}</div>
-                     @enderror
+                     @enderror -->
+                    <br/> <label for="location" class="form-label">Application</label>
+                         <label for="startdate" class="form-label">Start Date</label>
+                     <input type="date" class="form-control" id="create_startdate" name="startdate" placeholder="Enter Startdate">
+
+
+
                  </div>
                  </div>
 
@@ -115,20 +126,18 @@
 
                  <div class="row">
                     <div class="col-6">
-                    <br><label for="location" class="form-label">Application</label>
-                         <label for="startdate" class="form-label">Start Date</label>
-                     <input type="date" class="form-control" id="create_startdate" name="startdate" placeholder="Enter Startdate">
-
-
-
-                    </div>
-                    <div class="col-6">
-
                     <br/><label for="location" class="form-label">Application</label>
                         <label for="enddate" class="form-label">End Date</label>
                      <br><input type="date" class="form-control" id="create_enddate" name="enddate" placeholder="Enter Enddate">
 
+                    </div>
+                    <div class="col-6">
 
+  <br/><label for="description" class="form-label">Description</label>
+                             <textarea class="form-control" name="description" id="create_description" rows="3"></textarea>
+                             @error('description')
+                             <div class="text-danger">{{ $message }}</div>
+                             @enderror
 
 
 
