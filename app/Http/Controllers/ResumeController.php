@@ -160,7 +160,7 @@ public function update(Request $request,$id)
     $data->first_name=$request->first_name;
     $data->last_name=$request->last_name;
     $designationString=$request->input('designation');
-    $data->designation= implode(', ',$designationString);
+    $data->designation=implode(', ',$designationString);
     $data->experience=$request->experience;
     $data->phone=$request->phone;
     $data->email=$request->email;

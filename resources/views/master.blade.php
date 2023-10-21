@@ -1030,7 +1030,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
               <li class="breadcrumb-item active">Dashboard </li>
             </ol>
           </div><!-- /.col -->
@@ -1083,7 +1083,7 @@ src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 {{--ckeditor and sweetalert cdn --}}
 <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-   <script src="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"></script>  --}}
+   <script src="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"></script> 
     <script>
       ClassicEditor
           .create( document.querySelector('#edit_description,#create_description,#update_summary'))
@@ -1105,7 +1105,7 @@ src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
             "ordering": true,  // Enable sorting
             "searching": true, // Enable searching
             "order": [[0, "desc"]],
-       
+            "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
             // Add more optionsx` as needed
         });
     });

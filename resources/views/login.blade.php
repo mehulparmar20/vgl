@@ -7,6 +7,13 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
+<style>
+    #id1{
+        position: absolute;
+        left:-120px;
+        top:50px;
+    }
+</style>
 <body>
     <div class="container">
         <div clas="row">
@@ -14,9 +21,10 @@
             <div class="col-8">
     <form action="{{route('custom-login')}}" method="POST" >
         @csrf
+        <a href="{{route('welcome')}}"><img src="{{asset('images/left-arrow.png')}}" id="id1"></a>
         <div class="form-group">
             <h1>Login Form</h1>
-        </div>
+        </div>  
         <div class="form-group">
           <label for="email">Email address</label>
           <input type="email" name="email"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -39,7 +47,7 @@
                 </label>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-success">Submit</button>
         <div class="col-12">
             <div class="text-center">
                 <p class="mb-0">Don't have an account yet? 

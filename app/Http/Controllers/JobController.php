@@ -14,11 +14,15 @@ class JobController extends Controller
     public function frontindex()
     {
         // $startdate=Job::get('startdate');
+        // dd($startdate);
         // $enddate=Job::get('enddate');
-        $startdate = '2023-10-17';  // Replace with your actual start date
-        $enddate = '2023-10-23'; 
-        $data = Job::whereDate('startdate', '>=', $startdate)
-                   ->whereDate('enddate', '<=', $enddate)
+        $startdate = '2020-01-1';  // Replace with your actual start date
+        $enddate = '2024-12-31'; 
+        $data = Job::
+        // whereDate('startdate', '>=', $startdate)
+                //    ->whereDate('enddate', '<=', $enddate)
+                   orderBy('id', 'desc')
+                   ->where('delete_status',1)
                    ->get();
 
         // dd($data);
@@ -28,7 +32,7 @@ class JobController extends Controller
     public function index()
     {
         $data=Job::orderBy('id', 'desc')
-        // ->where('delete_status',1)
+        ->where('delete_status',1)
         ->get();
         return view('job.index',compact('data'));
     }

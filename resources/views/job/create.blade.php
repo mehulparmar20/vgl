@@ -98,7 +98,7 @@
                                 @enderror
                                 </div>
                                 <div class="col-7">
-                                    <br><label for="location" class="form-label">Job Duration</label>
+                                    <br><label for="location" class="form-label">Application</label>
                                 <br>    <label for="startdate" class="form-label">Start Date</label>
                                     <input type="date" class="form-control" id="create_startdate"name="startdate" placeholder="Enter Startdate" >
                                   <br>  <label for="enddate" class="form-label">End Date</label>

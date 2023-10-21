@@ -12,7 +12,7 @@
                     <div class="card">
                        
                         <div id="color1" class="card-header px-4 py-3">
-                            <h5 class="nav mb-0"><b>Resume Form</b></h5>
+                            <h5 class="nav mb-0" style="color: white;"><b>Resume Form</b></h5>
                         </div>
                         @if(session('success'))
                         <div class="alert alert-success">
@@ -22,7 +22,7 @@
                        
                         <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-5">
+                                    <div class="col-md-6">
                                         <label for="first_name" >First Name<span class="text text-danger">*</span></label>
                                         <input type="text" class="form-control" id="create_fname"name="first_name" 
                                         placeholder="Enter First Name" >
@@ -31,7 +31,7 @@
                                     @enderror
                                     </div>
                                   
-                                   <div class="col-md-5">
+                                   <div class="col-md-6">
                                         <label for="last_name" class="form-label">Last Name<span class="text text-danger">*</span></label>
                                         <input type="text" class="form-control" id="create_lname"name="last_name" placeholder="Enter Last Name" >
                                         @error('last_name')
@@ -41,7 +41,7 @@
                                 </div>
     
                                 <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <br> <label for="dob"class="form-label">DOB</label>
                                      <input type="date" class="form-control" name="dob"id="create_dob" placeholder="Enter DOB" >
                                      @error('dob')
@@ -49,7 +49,7 @@
                                  @enderror
                                  </div>
                        
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                    <br> <label for="designation" class="form-label">Designation<span class="text text-danger">*</span></label>
                                     <select  multiple="multiple"type="text" class="form-control" 
                                     name="designation[]"id="create_designation" 
@@ -66,14 +66,14 @@
                                 </div>
                                 </div>
                                 <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <br><label for="experience" class="form-label">Total Experience<span class="text text-danger">*</span></label>
                                     <input type="text" class="form-control" name="experience" id="create_experience" placeholder="Enter Experience" >
                                     @error('experience')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                    <br> <label for="phone" class="form-label">Mobile No<span class="text text-danger">*</span></label>
                                     <input type="phone" class="form-control" id="create_phone"name="phone" placeholder="Enter phone no"  >
                                     @error('phone')
@@ -82,14 +82,14 @@
                                 </div></div>
                                 
                                 <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                   <br>  <label for="email" class="form-label">Email<span class="text text-danger">*</span></label>
                                     <input type="email" class="form-control" id="create_email"name="email" placeholder="Enter Email"  >
                                     @error('email')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                                 </div>
-                               <div class="col-md-5">
+                               <div class="col-md-6">
                                     <br><label for="location" class="form-label">Location</label>
                                     <input type="text" class="form-control" id="create_location"name="location" placeholder="Enter Location" >
                                     {{-- @error('location')
@@ -111,8 +111,8 @@
                                   </select>
                                     </div> --}}
                                     {{-- @dd($state) --}}
-                                <div class="col-md-5">
-                                    <label for="state" class="form-label">State<span class="text text-danger">*</span></label>
+                                <div class="col-md-6">
+                                    <br/><label for="state" class="form-label">State<span class="text text-danger">*</span></label>
                                     <select  type="text" class="form-control" 
                                     name="state" id="create_state" 
                                     placeholder="Enter State">
@@ -142,8 +142,8 @@
                                 </div> --}}
                                 
                                    {{-- @dd($district) --}}
-                                    <div class="col-md-5">
-                                        <label for="city" class="form-label">District<span class="text text-danger">*</span></label>
+                                    <div class="col-md-6">
+                                    <br/>    <label for="city" class="form-label">District<span class="text text-danger">*</span></label>
                                         <select  type="text" class="form-control" 
                                     name="district"id="create_district" 
                                     placeholder="Enter District"  >
@@ -161,7 +161,7 @@
                                 </div>
                                 <div class="row">
                                     {{-- @dd($city) --}}
-                                    <div class="col-md-5"><br>
+                                    <div class="col-md-6"><br>
                                     <label for="city" class="form-label">City<span class="text text-danger">*</span></label>
                                     <select  type="text" class="form-control" 
                                 name="city"id="create_city" 
@@ -178,11 +178,11 @@
                                 @enderror
                                     </div>
                                 
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <br> <label for="resume" class="form-label">Resume<span class="text text-danger">*</span></label>
                                     <input type="file" class="form-control" 
                                     id="create_resume"name="resume" placeholder="Choose Resume"  >
-                                    <span class="text text-danger">Note: Upload pdf or Word</span>
+                                    <span class="text-danger">Note: Upload PDF or Word only, max file size 5MB</span>
                                     @error('resume')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -190,7 +190,7 @@
                                
                                 </div>
                                 <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <br><label for="postcode" class="form-label">Pincode</label>
                                     <input type="text" class="form-control" id="create_pincode"name="pincode" placeholder="Enter Pincode"  >
                                     {{-- @error('pcode')
@@ -198,7 +198,7 @@
                                 @enderror --}}
                                 </div>
                                     
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <br><label for="postcode" class="form-label">Higher Qualification<span class="text text-danger">*</span></label>
                                     <input type="text" class="form-control" id="create_qualification"name="qualification" placeholder="Enter qualification"  >
                                     @error('qualification')
@@ -207,7 +207,7 @@
                              </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-5">
+                                    <div class="col-md-6">
                                         <br><label for="education" class="form-label">Education</label>
                                         <input type="text" class="form-control" name="education" id="create_education" placeholder="Enter Education" >
                                         {{-- @error('education')
@@ -216,7 +216,7 @@
                                     </div>
                                     
                                
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <br><label for="bsValidation13" class="form-label">About My Self</label>
                                     <textarea class="form-control" id="create_summary"name="summery"  rows="3" ></textarea>
                                 </div>
@@ -225,10 +225,12 @@
                                 <div class="col-md-12">
                                     <div class="form-group form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1"><a href="{{route('term')}}"> I agree to the terms and conditions</a></label>
+                                        <label class="form-check-label" for="exampleCheck1"><a href="{{route('term')}}"> <span style="margin-top:1px;">I agree to the terms and conditions</span></a></label>
                                       </div>
+                                      
                                    <div class="d-md-flex d-grid align-items-center gap-3">
-                                        <button type="submit" class="btn btn-md px-4" id="storresume">Submit</button>
+                                        <button type="submit" class="btn btn-success" id="storresume">Submit</button>
+                                       
                                     </div>
                                 </div>
                                 

@@ -50,11 +50,11 @@
                                     <select  type="text" class="form-control" multiple="multiple" name="designation[]"id="update_designation" 
                                     placeholder="Enter Designation"  >
                                     {{-- <option value="{{$data->designation}}">{{$data->designation}}</option> --}}
-                                    <option value="Backend">Backend</option>
-                                    <option value="Frontend">Frontend</option>
-                                    <option value="Fullstack">Full Stack</option>
-                                    <option value="phpdeveloper">Php Developer</option>
-                                    <option value="laravel">Laravel Developer</option>
+                                    <option value="Backend"{{ old('designation') == 'Backend' ? 'selected' : '' }}>Backend</option>
+                                    <option value="Frontend"{{ old('designation') == 'Frontend' ? 'selected' : '' }}>Frontend</option>
+                                    <option value="Fullstack"{{ old('designation') == 'Fullstack' ? 'selected' : '' }}>Full Stack</option>
+                                    <option value="phpdeveloper"{{ old('designation') == 'phpdeveloper' ? 'selected' : '' }}>Php Developer</option>
+                                    <option value="laravel"{{ old('designation') == 'laravel' ? 'selected' : '' }}>Laravel Developer</option>
                                     </select>
                                     @error('designation')
                                     <div class="text-danger">{{ $message }}</div>
