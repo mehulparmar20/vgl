@@ -12,7 +12,7 @@
                     <div class="card">
                        
                         <div id="color1" class="card-header px-4 py-3">
-                            <h5 class="nav mb-0" style="color: white;"><b>Resume Form</b></h5>
+                            <h5 class="nav mb-0" style="color: white;"><b>Submit Your Resume</b></h5>
                         </div>
                         @if(session('success'))
                         <div class="alert alert-success">

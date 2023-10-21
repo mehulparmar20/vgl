@@ -20,7 +20,7 @@
                     <div class="card">
                       
                         <div id="color1" class="card-header px-4 py-3">
-                            <h5 class="nav mb-0"><b>Job Edit</b></h5>
+                            <h5 class="nav mb-0" style="color:white;"><b>Job Edit</b></h5>
                         </div>
                         @if(session('success'))
                         <div class="alert alert-success">
