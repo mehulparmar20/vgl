@@ -1734,7 +1734,7 @@ span.info,.info span strong a{position: relative;display: block;text-decoration:
          <div class="top-menu">
             <div class="h_mnu_01">
                <ul>
-                <li><a  href="{{route('welcome')}}">Home</a></li>																			
+                <li><a  href="{{route('welcome')}}">Jobs</a></li>																			
                 <li><a href="{{route('resume.create')}}">Apply</a></li>
                 @if(Auth::check())
                 <li><a target="_blank" href="{{url('/logout')}}">Log Out</a></li>

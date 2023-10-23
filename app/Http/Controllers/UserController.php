@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect('/dashboard');
+            return redirect('/dashboard')->with('success', 'Login Successfully!');
         
         }
         else{
@@ -50,7 +50,7 @@ class UserController extends Controller
             'user_type'=>$request->user_type,
         ]);
 
-        return redirect()->route('/login')->with('success', 'User Registered successfully.');
+        return redirect('/login')->with('success', 'Register Successfully!');
     }
     public function logout(Request $request) {
         Auth::logout(); // Log the user out

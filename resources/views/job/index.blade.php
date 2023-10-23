@@ -12,8 +12,9 @@
 </head>
 <body> --}}
     <div class="container">
-      <a class="btn btn-success" href="{{route('job.create')}}">Add Job</a><br>
-<table  class="table table-striped table-light table-bordered"id="jobu1"><br>
+      <a class="btn btn-success" href="{{route('job.create')}}">Add Job</a>
+     {{-- <a href="{{route('search')}}" class="btn btn-success" style="margin-left: 12px;">Sort</a> --}}
+<br><table  class="table table-striped table-light table-bordered"id="jobu1"><br>
     <thead>
       <tr>
         
