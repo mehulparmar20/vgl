@@ -66,12 +66,10 @@ Route::post('resume-store', [ResumeController::class, 'store'])->name('resume-st
 Route::get('resumeview2', [ResumeController::class,'view2'])->name('resume.view2');
 Route::get('term', [DashboardController::class,'term'])->name('term');
 
+//for sort
+// Route::get('search', [JobController::class, 'showSearchForm'])->name('search');
+// Route::post('search-store', [JobController::class, 'sortstore'])->name('search-store');
 
-Route::get('/search', [JobController::class, 'showSearchForm'])->name('search');
-Route::post('/search', [JobController::class, 'searchByDesignation']);
-// Route::get('/search-index', [JobController::class,'index'])->name('sort.index');
+Route::post('titlestore', [ResumeController::class, 'titlestore'])->name('titlestore');
 
 // Route::get('city', [DashboardController::class,'index'])->name('city');
-// Route::post('/getState', [DashboardController::class,'getState']);
-// // Route::post('/getdistrict', [DashboardController::class,'getDistrict']);
-// Route::post('/getCity', [DashboardController::class,'getCity']);

@@ -48,17 +48,18 @@
                                      <div class="text-danger">{{ $message }}</div>
                                  @enderror
                                  </div>
-                       
+                                 {{-- @dd($design); --}}
                                 <div class="col-md-6">
                                    <br> <label for="designation" class="form-label">Designation<span class="text text-danger">*</span></label>
-                                    <select  multiple="multiple"type="text" class="form-control" 
+                                    <select type="text"multiple="multiple" class="form-control" 
                                     name="designation[]"id="create_designation" 
                                     placeholder="Enter Designation"  >
-                                    <option value="Backend">Backend</option>
-                                    <option value="Frontend">Frontend</option>
-                                    <option value="Fullstack">Full Stack</option>
-                                    <option value="Fullstack">Php Developer</option>
-                                    <option value="Fullstack">Laravel Developer</option>
+        
+                                    @foreach ($design as $d)
+                                  
+                                    <option value="{{$d->id}}">{{$d->title}}</option>  
+                                    @endforeach
+                                    
                                     </select>
                                     @error('designation')
                                     <div class="text-danger">{{ $message }}</div>

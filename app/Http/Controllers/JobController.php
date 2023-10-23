@@ -4,28 +4,34 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use App\Models\Resume;
-use App\Models\Sort;
+
 use Illuminate\Http\Request;
 
 
 class JobController extends Controller
  {
 
-    public function showSearchForm()
-    {
-        return view('search');
-    }
+    // public function showSearchForm(Request $request)
+    // {
+    //     // dd($request);
+    //     $designation = $request->input('designation');
 
-    public function searchByDesignation(Request $request)
-    {
-        $designation = $request->input('designation');
+    //     $sort= Resume::where('designation',$designation)
+    //         ->orderBy('first_name', 'asc')
+    //         ->get();
+    //     return view('search',compact('sort','designation'));
+        
+    // }
 
-        $sort= Resume::where('designation', $designation)
-            ->orderBy('first_name', 'asc')
-            ->get();
-// dd($sort);
-        return view('search',compact('sort'));
-    }
+    // public function sortstore(Request $request)
+    // {
+    //     $designation = $request->input('designation');
+    //     $sort= Resume::where('designation',$designation)
+    //         ->orderBy('first_name', 'asc')
+    //         ->get();
+    //     return view('search',compact('sort'));
+      
+    // }
     public function frontindex()
     {
         // $startdate=Job::get('startdate');
