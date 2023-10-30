@@ -19,7 +19,7 @@
       <tr>
         
         <th scope="col">ID</th>
-        <th scope="col">Job Title</th>
+        <th scope="col">Job Position</th>
         {{-- <th scope="col"width="10px">Description</th> --}}
         <th scope="col">Qualification</th>
         <th scope="col">Category</th>

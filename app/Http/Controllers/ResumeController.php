@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Mail;
+
 use App\Mail\DemoMail;
 use App\Models\City;
 use App\Models\Country;
@@ -17,18 +18,14 @@ class ResumeController extends Controller
 {
     public function titlestore(Request $request)
     {
-        // dd($request);
         $designat = $request->input('designation');
-        $data = Resume::where('designation', $designat)
-            ->get();
+        $data = Resume::where('designation', $designat)->get();
         $design = Job::select('title', 'id')->get();
-        // dd($data);
         return view('resume.index', compact('data', 'design'));
     }
     public function view2()
     {
         $data = Resume::get()->where('delete_status', 0);
-        // dd($data);
         return view('resume.view2', compact('data'));
     }
     public function index()
@@ -46,14 +43,11 @@ class ResumeController extends Controller
 
     public function create()
     {
-
         $country = Country::all();
         $state = State::all();
-        // dd($state);
         $district = District::all();
         $city = City::all();
         $design = Job::select('title', 'id')->get();
-        //    dd($design);
         return view('resume.create', compact('country', 'state', 'district', 'city', 'design'));
     }
     public function store(Request $request)
@@ -62,50 +56,25 @@ class ResumeController extends Controller
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'designation' => 'required',
             'phone' => 'required',
             'email' => 'required',
             'experience' => 'required|integer',
-            // 'country' => 'required',
-            'city' => 'required',
-            'district' => 'required',
             'state' => 'required',
-            'pincode' => 'required',
+            'city' => 'required',
             'qualification' => 'required',
-            // 'profile' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:2048',
-            // 'resume' => 'required|file|mimes:pdf,jpg,jpeg,png,gif',
             'resume' => 'required|file|mimetypes:application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-            // Define rules for other fields here
         ]);
         // dd($request);
         // dd($request->all());
         $resume = new Resume();
         $resume->first_name = $request->first_name;
         $resume->last_name = $request->last_name;
-        //for multiple selection in dropdown
-
-        $resume->designation = $request->designation;
-        // dd($resume);
-        $designationString = $request->input('designation');
-        $resume->designation = implode(', ', $designationString); //only one selection
-        //end multiple selection 
-        // dd($resume->designation);
+        $resume->designation = $request->input('designation');
+        $resume->currentdesignation= $request->currentdesignation	;
         $resume->experience = $request->experience;
         $resume->phone = $request->phone;
         $resume->email = $request->email;
         $resume->location = $request->location;
-        //image
-        // $filename=time().".". $request->file('profile')->getClientOriginalExtension();
-        // $request->file('profile')->storeAs('uploads',$filename);
-        // dd($filename);
-        //image end
-        // if ($request->hasFile('profile')) {
-        //     $file = $request->file('profile');
-        //     $fileName = $file->getClientOriginalName(); 
-        //     Storage::disk('public')->put($fileName, file_get_contents($file));
-        // }
-        // $resume->profile=$fileName;
-
         //pdf
         if ($request->hasFile('resume')) {
             $file = $request->file('resume');
@@ -114,10 +83,7 @@ class ResumeController extends Controller
         }
         $resume->resume = $fileName;
         //end pdf
-
-        // $resume->country=$request->country;
         $resume->state = $request->state;
-        $resume->district = $request->district;
         $resume->city = $request->city;
         $resume->pincode = $request->pincode;
         $resume->qualification = $request->qualification;
@@ -141,7 +107,6 @@ class ResumeController extends Controller
     {
 
         $data = Resume::find($id);
-        // dd($data);
         return view('view', compact('data'));
     }
     public function edit($id)
@@ -151,7 +116,8 @@ class ResumeController extends Controller
         $state = State::all();
         $district = District::all();
         $city = City::all();
-        return view('resume.edit', compact('data', 'country', 'state', 'district', 'city'));
+        $design = Job::select('title', 'id')->get();
+        return view('resume.edit', compact('data', 'country', 'state', 'district', 'city', 'design'));
     }
     public function update(Request $request, $id)
     {
@@ -159,11 +125,77 @@ class ResumeController extends Controller
         $data->first_name = $request->first_name;
         $data->last_name = $request->last_name;
         $designationString = $request->input('designation');
-        $data->designation = implode(', ', $designationString);
+        $data->currentdesignation= $request->currentdesignation;
+        // $data->designation = implode(', ', $designationString);
         $data->experience = $request->experience;
         $data->phone = $request->phone;
         $data->email = $request->email;
         $data->location = $request->location;
+        //pdf
+        if ($request->hasFile('resume')) {
+            $file = $request->file('resume');
+            $fileName = $file->getClientOriginalName();
+            Storage::disk('public')->put($fileName, file_get_contents($file));
+        }
+        $data->resume = $fileName;
+        //end pdf
+        $data->state = $request->state;
+        $data->city = $request->city;
+        $data->pincode = $request->pincode;
+        $data->qualification = $request->qualification;
+        $data->education = $request->education;
+        $data->dob = $request->dob;
+        $data->summery = $request->summery;
+        // dd($data);
+        $data->save();
+        return redirect()->route('resume.index')->with('success', 'Resume Updated Sucessfully');
+    }
+    public function delete(Request $request,$id)
+    {
+        $id = $request->id;
+        $data = Resume::findOrFail($id);
+        $data->delete_status ='0';
+        $data->save();
+        return response()->json(['status' => 'Resume Deleted Successfully']);//for sweetalert msg
+//  return redirect()->route('resume.index')->with('success', 'Resume Delete Sucessfully');
+    }
+}
+// Extra Code
+//store code
+ // 'profile' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:2048',
+            // 'resume' => 'required|file|mimes:pdf,jpg,jpeg,png,gif',
+            //for multiple selection in dropdown
+
+        // $resume->designation = $request->input('designation');
+        // dd($resume);
+        // $designationString = $request->input('designation');
+        // $resume->designation = implode(', ', $designationString); //only one selection
+        //end multiple selection 
+            //image
+        // $filename=time().".". $request->file('profile')->getClientOriginalExtension();
+        // $request->file('profile')->storeAs('uploads',$filename);
+        // dd($filename);
+        //image end
+        // if ($request->hasFile('profile')) {
+        //     $file = $request->file('profile');
+        //     $fileName = $file->getClientOriginalName(); 
+        //     Storage::disk('public')->put($fileName, file_get_contents($file));
+        // }
+        // $resume->profile=$fileName;
+        // end image
+        // mail after insert
+        // $email = 'veravalonline@gmail.com';
+        // $mailData = [
+            // 'title' => 'Mail From VeravalOnline',
+            // 'body' => 'This is for Resume Created Successfully',
+
+        // ];
+        // Mail::to($email)->send(new DemoMail($mailData));
+        // dd('send');
+        // return redirect()->route('resume.index')->with('success', 'Resume has been saved successfully.');
+
+
+        // update code
         //image
         // $filename=time().".". $request->file('profile')->getClientOriginalExtension();
         // $request->file('profile')->storeAs('uploads',$filename);
@@ -175,33 +207,5 @@ class ResumeController extends Controller
         //     Storage::disk('public')->put($fileName, file_get_contents($file));
         // }
         // $resume->profile=$fileName;
-
-        //pdf
-        if ($request->hasFile('resume')) {
-            $file = $request->file('resume');
-            $fileName = $file->getClientOriginalName();
-            Storage::disk('public')->put($fileName, file_get_contents($file));
-        }
-        $data->resume = $fileName;
-        //end pdf
-        // $data->country=$request->country;
-        $data->state = $request->state;
-        $data->district = $request->district;
-        $data->city = $request->city;
-        $data->pincode = $request->pincode;
-        $data->qualification = $request->qualification;
-        $data->education = $request->education;
-        $data->dob = $request->dob;
-        $data->summery = $request->summery;
-        $data->save();
-        return redirect()->route('resume.index')->with('success', 'Resume Updated Sucessfully');
-    }
-    public function delete(Request $request)
-    {
-        $id = $request->id;
-        $data = Resume::findOrFail($id);
-        $data->delete_status = '0';
-        $data->save();
-        return redirect()->route('resume.index')->with('success', 'Resume is Deleted Successfully!');
-    }
-}
+        // $designationString = $request->input('designation');
+        // $data->designation = implode(', ', $designationString);

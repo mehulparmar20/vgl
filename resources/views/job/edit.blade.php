@@ -119,7 +119,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6">
-                            <label for="first_name">Job Title</label>
+                            <label for="first_name">Job Position</label>
                             <input type="text" class="form-control" value="{{$data->title}}" id="create_title" name="title" placeholder="Enter Title Name">
                             @error('title')
                             <div class="text-danger">{{ $message }}</div>

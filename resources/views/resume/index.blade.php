@@ -3,13 +3,14 @@
     <div class="container">
         <form method="POST" action="{{ route('titlestore') }}">
             @csrf
-            <select name="designation"class="form-control"style="width: 200px;">
+            <select name="designation"class="form-control" style="width: 200px;">
 
                 @foreach ($design as $d)
                     <option value="{{ $d->id }}">{{ $d->title }}</option>
                 @endforeach
             </select>
-            <input type="submit" class="btn btn-success btn-sm" value="Search" style=" position: absolute;left: 480px;top:140px;">
+            <input type="submit" class="btn btn-success btn-sm" value="Search"
+                style=" position: absolute;left: 480px;top:140px;">
         </form><br>
         <a class="btn btn-success" href="{{ route('resume.create') }}">Add Form</a><br>
         <table class="table table-striped table-light table-bordered data_table" id="resumetable"><br>
@@ -18,22 +19,12 @@
                     <th scope="col">ID</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
-                    {{-- <th scope="col">DOB</th> --}}
                     <th scope="col">Designation</th>
-                    {{-- <th scope="col">Experience</th> --}}
-                    {{-- <th scope="col">Mobile</th> --}}
-                    {{-- <th scope="col">Email</th> --}}
+                    <th scope="col">Experience</th>
                     <th scope="col">Location</th>
-                    {{-- <th scope="col">Country</th> --}}
-                    {{-- <th scope="col">State</th> --}}
-                    {{-- <th scope="col">District</th> --}}
                     <th scope="col">City</th>
-
-                    {{-- <th scope="col">profile</th> --}}
                     <th scope="col">Resume</th>
-                    {{-- <th scope="col">Pincode</th> --}}
-                    {{-- <th scope="col">Qualification</th> --}}
-                    <th scope="col">Education</th>
+                    <th scope="col">Qualification</th>
                     <th scope="col"width="40px">MySelf</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -41,34 +32,18 @@
             <tbody>
                 @foreach ($data as $row)
                     <tr>
+                        <input type="hidden"class="deleteid" value="{{ $row->id }}">
                         <td scope="row">{{ $row->id }}</td>
                         <td>{{ $row->first_name }}</td>
                         <td>{{ $row->last_name }}</td>
-                        {{-- <td>{{$row->dob}}</td> --}}
                         @php
-                            $name = App\Models\Job::where('id',$row->designation)->first();
+                            $name = App\Models\Job::where('id', $row->designation)->first();
                         @endphp
-                        <td>{{ @$name->title}}</td>
-
-
-                        {{-- <td>{{$row->experience}}</td> --}}
-                        {{-- <td>{{$row->phone}}</td> --}}
-                        {{-- <td>{{$row->email}}</td> --}}
+                        <td>{{ @$name->title }}</td>
+                        <td>{{ $row->experience }}</td>
                         <td>{{ $row->location }}</td>
-                        {{-- <td>{{$row->country}}</td> --}}
-                        {{-- <td>{{@$row->countrydata->country_name}}</td> --}}
-                        {{-- <td>{{@$row->statedata->name}}</td> --}}
-                        {{-- <td>{{@$row->districtdata->district_name}}</td> --}}
-                        <td>{{ @$row->citydata->city_name }}</td>
-
-                        {{-- <td>
-       <img src="{{asset('storage/'.$row->profile) }}"width="50"height="50" 
-       class="img img-responsive">
- {{-- {{$row->profile}} 
-        </td> --}}
+                        <td>{{ $row->city }}</td>
                         <td>{{ $row->resume }}</td>
-                        {{-- <td>{{$row->pincode}}</td> --}}
-                        {{-- <td>{{$row->qualification}}</td> --}}
                         <td>{{ $row->education }}</td>
                         <td>{!! $row->summery !!}</td>
                         <td>
@@ -86,7 +61,7 @@
                                         <path
                                             d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
                                     </svg></i></a>
-                            <a href="{{ route('resume-delete', $row->id) }}"><i class='bx bxs-show'>
+                            <a class="deletebtn" href="{{ route('resume-delete', $row->id) }}"><i class='bx bxs-show'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                         fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"style="color:red;">
                                         <path
@@ -103,3 +78,29 @@
     </div>
     </div>
 @endsection
+
+{{-- extra code --}}
+{{-- <th scope="col">DOB</th> 
+ {{-- <th scope="col">Mobile</th> --}}
+{{-- <th scope="col">Email</th> --}}
+{{-- <th scope="col">Country</th> --}}
+{{-- <th scope="col">State</th> --}}
+{{-- <th scope="col">District</th> --}}
+{{-- <th scope="col">profile</th> --}}
+{{-- <th scope="col">Pincode</th> --}}
+{{-- <th scope="col">Qualification</th> --}}
+{{-- <td>{{$row->phone}}</td> --}}
+{{-- <td>{{$row->email}}</td> --}}
+{{-- <td>{{$row->country}}</td> --}}
+{{-- <td>{{@$row->countrydata->country_name}}</td> --}}
+{{-- <td>{{@$row->statedata->name}}</td> --}}
+{{-- <td>{{@$row->districtdata->district_name}}</td> --}}
+{{-- <td>{{ @$row->citydata->city_name }}</td> --}}
+{{-- <td>{{$row->dob}}</td> --}}
+{{-- <td>
+       <img src="{{asset('storage/'.$row->profile) }}"width="50"height="50" 
+       class="img img-responsive">
+ {{-- {{$row->profile}} 
+        </td> --}}
+{{-- <td>{{$row->pincode}}</td> --}}
+{{-- <td>{{$row->qualification}}</td> --}}

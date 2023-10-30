@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\MailController;
@@ -57,6 +58,10 @@ Route::get('job-edit/{id}', [JobController::class, 'edit'])->name('job.edit');
 Route::post('job-update/{id}', [JobController::class, 'update'])->name('job-update');
 Route::get('job-delete/{id}', [JobController::class, 'delete'])->name('job-delete'); 
 Route::get('view2', [JobController::class,'view2'])->name('job.view2');
+
+// for search according designation
+Route::post('titlestore', [ResumeController::class, 'titlestore'])->name('titlestore');
+
 });
 Route::get('view1/{id}', [JobController::class, 'view1'])->name('job.view1');
 Route::get('/', [JobController::class, 'frontindex'])->name('welcome');
@@ -65,11 +70,12 @@ Route::get('resume-create', [ResumeController::class,'create'])->name('resume.cr
 Route::post('resume-store', [ResumeController::class, 'store'])->name('resume-store');
 Route::get('resumeview2', [ResumeController::class,'view2'])->name('resume.view2');
 Route::get('term', [DashboardController::class,'term'])->name('term');
+// ApplyController
+Route::get('apply-create/{id}', [ApplyController::class,'apply'])->name('apply.create');
+Route::post('apply-store', [ApplyController::class, 'store'])->name('apply-store');
 
 //for sort
 // Route::get('search', [JobController::class, 'showSearchForm'])->name('search');
 // Route::post('search-store', [JobController::class, 'sortstore'])->name('search-store');
-
-Route::post('titlestore', [ResumeController::class, 'titlestore'])->name('titlestore');
 
 // Route::get('city', [DashboardController::class,'index'])->name('city');

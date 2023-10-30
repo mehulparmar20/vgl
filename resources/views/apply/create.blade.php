@@ -3,10 +3,9 @@
     <br>
 
     <div class="container">
-        <a class="btn btn-success" href="{{ route('welcome') }}" style="margin-bottom: 15px !important;">Jobs List</a>
-        <form action="{{ url('resume-store') }}" enctype="multipart/form-data" method="POST">
+        <a class="btn btn-success" href="{{ url('/vgl') }}" style="margin-bottom: 15px !important;">Jobs List</a>
+        <form action="{{ url('apply-store') }}" enctype="multipart/form-data" method="POST">
             @csrf
-
             <div class="row">
                 <div class="col-xl ">
                     <div class="card">
@@ -50,17 +49,15 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <br> <label for="designation" class="form-label">Apply For Position</label>
-                                    <select type="text"class="form-control" name="designation"id="create_designation"
-                                        placeholder="Enter Designation">
-                                        <option value=""select>Select a Position</option>
-                                        @foreach ($design as $d)
-                                            <option value="{{ $d->id }}">{{ $d->title }}</option>
-                                        @endforeach
-
-                                    </select>
+                                    <br><label for="experience" class="form-label">Designation<span class="text text-danger">*</span></label>
+                                    @foreach ($design as $item)
+                                    <input type="text" class="form-control" 
+                                    value="{{$item['title']}}"
+                                    name="designation" id="create_designation" placeholder="Enter Designation" readonly>
+                                    @endforeach
+                                  
                                 </div>
-                            </div>
+                                </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <br><label for="experience" class="form-label">Total Experience<span

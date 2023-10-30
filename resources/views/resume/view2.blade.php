@@ -72,7 +72,7 @@
              <th scope="col">State</th>
             <th scope="col">District</th>
             <th scope="col">City</th>
-            <th scope="col">Education</th>
+            <th scope="col">Qualification</th>
             <th scope="col"width="40px">MySelf</th>
         </tr>
     </thead>

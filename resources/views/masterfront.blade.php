@@ -24,12 +24,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Vadodara Gas Limited (VGL) Company Vadodara, Piped Natural Gas (PNG) Agency Vadodara">
 <meta name="description" content="Vadodara Gas Limited (VGL) is a leading Gas Distributor and PNG Gas Company in the city of Vadodara and other part of city. At present, he distribute CNG in Vadodara, serving automobile sector consumers. ">
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,bold' rel='stylesheet' type='text/css'>
- <link href="css/style1.css" type="text/css" rel="stylesheet">
- <link rel="stylesheet" href="css/bjqs.css">
+ <link href="{{url('css/style1.css" type="text/css" rel="stylesheet')}}">
+ <link rel="stylesheet" href="{{url('css/bjqs.css')}}">
  
 
  <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300' rel='stylesheet' type='text/css'> 
@@ -77,10 +77,10 @@ setInterval(GetClock,1000);
 }
 </script>
 
-    <script src="js/tabcontent.js" type="text/javascript"></script>
+    <script src="{{url('js/tabcontent.js')}}" type="text/javascript"></script>
 
-  <script type="text/javascript" src="js/crawler.js" defer></script>
-	<script type="text/javascript" src="js/scroll2.js" defer></script>
+  <script type="text/javascript" src="{{url('js/crawler.js')}}" defer></script>
+	<script type="text/javascript" src="{{url('js/scroll2.js')}}" defer></script>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <!-- InstanceBeginEditable name="doctitle" -->

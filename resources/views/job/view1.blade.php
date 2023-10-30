@@ -83,7 +83,7 @@
             <h4 class="m-0">Job Details</h4>
           </div>
           <div>
-            <a class="btn btn-success" href="{{ route('resume.create') }}">Apply Job</a>
+            <a class="btn btn-success" href="{{route('apply.create',$data->id) }}">Apply Job</a>
           </div>
         </div>
       </div>
@@ -92,7 +92,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <strong> Job Title:</strong>
+              <strong> Job Position:</strong>
               {{ $data->title }}
             </div>
           </div>
